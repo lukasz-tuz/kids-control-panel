@@ -1,0 +1,18 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+    <h1>D:\dev\kids-control-panel\kids-control-panel\kids-control-panel.sch</h1>
+    <p>2021-01-31 16:00:09</p>
+    <p>Eeschema (5.1.7)-1</p>
+    <p><b>Component Count:</b>24</p>
+    <table>
+    <tr><th style='width:640px'>Ref</th><th>Qnty</th><th>Value</th><th>Part</th><th>Datasheet</th><th>Description</th><th>Vendor</th></tr><tr><td>96BB2-006-F1</td><td>1</td><td>4x4_Keypad</td><td>Keypad:4x4_Keypad</td><td></td><td></td><td></td></tr><tr><td>A1</td><td>1</td><td>Arduino_UNO_R3</td><td>MCU_Module:Arduino_UNO_R3</td><td>https://www.arduino.cc/en/Main/arduinoBoardUno</td><td>Arduino UNO Microcontroller Module, release 3</td><td></td></tr><tr><td>D1, D2, D3, D4, D5</td><td>5</td><td>LED</td><td>Device:LED</td><td>~</td><td>Light emitting diode</td><td></td></tr><tr><td>SW1, SW2, SW3, SW4</td><td>4</td><td>TACT-SWITCH</td><td>tinkerforge:TACT-SWITCH</td><td></td><td></td><td></td></tr><tr><td>SW5</td><td>1</td><td>KY-040</td><td>YEUTTERG_Generic:KY-040</td><td></td><td></td><td></td></tr><tr><td>SW6, SW7, SW8, SW9</td><td>4</td><td>SW_SPST_LED</td><td>Switch:SW_SPST_LED</td><td>~</td><td>Single Pole Single Throw (SPST) switch with LED, generic</td><td></td></tr><tr><td>U1, U2, U7</td><td>3</td><td>MCP23017_SP Expander Module</td><td>Interface_Expansion:MCP23017_SP</td><td>http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf</td><td>16-bit I/O expander, I2C, interrupts, w pull-ups, SPDIP-28</td><td></td></tr><tr><td>U3</td><td>1</td><td>TFT LCD</td><td>Display_Graphic:EA_eDIPTFT32-A</td><td>http://www.lcd-module.com/fileadmin/eng/pdf/grafik/ediptft43-ae.pdf</td><td>TFT graphical display, 320x240, 16 bit colour, LED backlight, 3.3V - 5V VDD, RS-232, I2C or SPI</td><td></td></tr><tr><td>U4</td><td>1</td><td>CA56-12SURKWA</td><td>Display_Character:CA56-12SURKWA</td><td>http://www.kingbright.com/attachments/file/psearch/000/00/00/CA56-12SURKWA(Ver.8A).pdf</td><td>4 digit 7 segment hyper red LED, common anode</td><td></td></tr><tr><td>U5</td><td>1</td><td>JOYSTICK_BUTTON</td><td>tinkerforge:JOYSTICK_BUTTON_2CH</td><td></td><td></td><td></td></tr><tr><td>U6</td><td>1</td><td>led_matrix_8x8_32mm</td><td>capricorn:led_matrix_8x8_32mm</td><td></td><td></td><td></td></tr><tr><td>U8</td><td>1</td><td>PCF8591</td><td>Interface_Expansion:PCF8591</td><td>http://www.nxp.com/documents/data_sheet/PCF8591.pdf</td><td>4ch ADC, 1 DAC, I2C Bus Interface, DIP/SOIC-16</td><td></td></tr><!--TABLEROW-->
+    </table>
+    </body>
+</html>
+    

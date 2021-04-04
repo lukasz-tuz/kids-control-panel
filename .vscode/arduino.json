@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:uno",
+    "sketch": "kids-control-panel\\control-panel.ino",
+    "port": "COM6"
+}

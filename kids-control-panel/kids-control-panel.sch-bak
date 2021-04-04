@@ -1,0 +1,1490 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 2
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Display_Character:CA56-12SURKWA U4
+U 1 1 601370CE
+P 8050 1650
+F 0 "U4" H 8050 2317 50  0000 C CNN
+F 1 "CA56-12SURKWA" H 8050 2226 50  0000 C CNN
+F 2 "Display_7Segment:CA56-12SURKWA" H 8050 1050 50  0001 C CNN
+F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/CA56-12SURKWA(Ver.8A).pdf" H 7620 1680 50  0001 C CNN
+F 4 "1G" H 8050 1650 50  0001 C CNN "Spice_Model"
+F 5 "N" H 8050 1650 50  0001 C CNN "Spice_Netlist_Enabled"
+F 6 "R" H 8050 1650 50  0001 C CNN "Spice_Primitive"
+	1    8050 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7700 5850 7700 6300
+Text Label 7700 6150 1    50   ~ 0
+I2C_SDA
+Text Label 7800 6150 1    50   ~ 0
+I2C_SCL
+Entry Wire Line
+	7600 6400 7700 6300
+Wire Wire Line
+	7800 5850 7800 6300
+Entry Wire Line
+	7700 6400 7800 6300
+Entry Wire Line
+	2200 3750 2300 3850
+Entry Wire Line
+	2200 3850 2300 3950
+Entry Wire Line
+	2200 3950 2300 4050
+Entry Wire Line
+	2200 4050 2300 4150
+Entry Wire Line
+	2200 4150 2300 4250
+Entry Wire Line
+	2200 4250 2300 4350
+Entry Wire Line
+	2200 4350 2300 4450
+Entry Wire Line
+	2200 4450 2300 4550
+$Comp
+L power:GND #PWR016
+U 1 1 601A8701
+P 10100 5300
+F 0 "#PWR016" H 10100 5050 50  0001 C CNN
+F 1 "GND" H 10105 5127 50  0000 C CNN
+F 2 "" H 10100 5300 50  0001 C CNN
+F 3 "" H 10100 5300 50  0001 C CNN
+	1    10100 5300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10100 5300 10050 5300
+Wire Wire Line
+	10050 5300 10050 5350
+Wire Wire Line
+	10050 5350 10000 5350
+Wire Wire Line
+	10050 5300 10050 5250
+Wire Wire Line
+	10050 5250 10000 5250
+Connection ~ 10050 5300
+$Comp
+L power:+3.3V #PWR05
+U 1 1 601AE2F3
+P 2450 750
+F 0 "#PWR05" H 2450 600 50  0001 C CNN
+F 1 "+3.3V" H 2465 923 50  0000 C CNN
+F 2 "" H 2450 750 50  0001 C CNN
+F 3 "" H 2450 750 50  0001 C CNN
+	1    2450 750 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR06
+U 1 1 601AE723
+P 2550 750
+F 0 "#PWR06" H 2550 600 50  0001 C CNN
+F 1 "+5V" H 2565 923 50  0000 C CNN
+F 2 "" H 2550 750 50  0001 C CNN
+F 3 "" H 2550 750 50  0001 C CNN
+	1    2550 750 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 950  2450 750 
+Wire Wire Line
+	2550 950  2550 750 
+$Comp
+L power:+3.3V #PWR015
+U 1 1 601D6C09
+P 7100 5300
+F 0 "#PWR015" H 7100 5150 50  0001 C CNN
+F 1 "+3.3V" H 7115 5473 50  0000 C CNN
+F 2 "" H 7100 5300 50  0001 C CNN
+F 3 "" H 7100 5300 50  0001 C CNN
+	1    7100 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 5300 7250 5300
+Wire Wire Line
+	7250 5300 7250 5350
+Wire Wire Line
+	7250 5350 7400 5350
+Wire Wire Line
+	7250 5300 7250 5250
+Wire Wire Line
+	7250 5250 7400 5250
+Connection ~ 7250 5300
+NoConn ~ 7700 4750
+NoConn ~ 7800 4750
+NoConn ~ 7900 4750
+NoConn ~ 8000 4750
+NoConn ~ 8100 4750
+NoConn ~ 8200 4750
+NoConn ~ 8300 4750
+NoConn ~ 8400 4750
+NoConn ~ 8600 4750
+NoConn ~ 8700 4750
+NoConn ~ 8800 4750
+NoConn ~ 8900 4750
+NoConn ~ 9000 4750
+NoConn ~ 9100 4750
+NoConn ~ 9200 4750
+NoConn ~ 9300 4750
+NoConn ~ 9500 4750
+NoConn ~ 9600 4750
+NoConn ~ 9700 4750
+NoConn ~ 8000 5850
+NoConn ~ 8100 5850
+NoConn ~ 8200 5850
+NoConn ~ 8300 5850
+NoConn ~ 8400 5850
+NoConn ~ 8600 5850
+NoConn ~ 8700 5850
+NoConn ~ 8800 5850
+NoConn ~ 9000 5850
+NoConn ~ 9100 5850
+NoConn ~ 9200 5850
+NoConn ~ 9500 5850
+NoConn ~ 9600 5850
+$Comp
+L Display_Graphic:EA_eDIPTFT32-A U3
+U 1 1 60139C7A
+P 8700 5250
+F 0 "U3" H 9050 6600 50  0000 C CNN
+F 1 "TFT LCD" H 8950 6500 50  0000 C CNN
+F 2 "Display:EA_eDIPTFT32-XXX" H 8700 3750 50  0001 C CNN
+F 3 "http://www.lcd-module.com/fileadmin/eng/pdf/grafik/ediptft43-ae.pdf" H 9000 5050 50  0001 C CNN
+F 4 "100meg" H 8700 5250 50  0001 C CNN "Spice_Model"
+F 5 "N" H 8700 5250 50  0001 C CNN "Spice_Netlist_Enabled"
+F 6 "R" H 8700 5250 50  0001 C CNN "Spice_Primitive"
+	1    8700 5250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4400 1150 4100 1150
+Wire Wire Line
+	4400 1250 4100 1250
+Text Label 4150 1150 0    50   ~ 0
+I2C_SDA
+Text Label 4150 1250 0    50   ~ 0
+I2C_SCL
+Entry Wire Line
+	4000 1250 4100 1150
+Entry Wire Line
+	4000 1350 4100 1250
+$Comp
+L power:+3.3V #PWR013
+U 1 1 602ACD32
+P 5100 800
+F 0 "#PWR013" H 5100 650 50  0001 C CNN
+F 1 "+3.3V" H 5115 973 50  0000 C CNN
+F 2 "" H 5100 800 50  0001 C CNN
+F 3 "" H 5100 800 50  0001 C CNN
+	1    5100 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 850  5100 800 
+Text GLabel 2300 4650 3    50   Output ~ 0
+KPD0
+Text GLabel 7500 6400 0    50   BiDi ~ 0
+I2C
+Text GLabel 4000 1450 3    50   BiDi ~ 0
+I2C
+Wire Wire Line
+	1850 1350 1750 1350
+Wire Wire Line
+	1750 1350 1750 800 
+Text GLabel 4400 1750 0    50   Output ~ 0
+EXP1_INTB
+Text GLabel 4400 1850 0    50   Output ~ 0
+EXP1_INTA
+Text GLabel 1650 1750 0    50   Input ~ 0
+EXP0_INTB
+Text GLabel 1650 1850 0    50   Input ~ 0
+EXP0_INTA
+Wire Wire Line
+	1650 1750 1850 1750
+Wire Wire Line
+	1650 1850 1850 1850
+Wire Wire Line
+	1650 1950 1850 1950
+Wire Wire Line
+	5800 1150 6000 1150
+Wire Wire Line
+	5800 1250 6000 1250
+Wire Wire Line
+	5800 1350 6000 1350
+Wire Wire Line
+	5800 1450 6000 1450
+Wire Wire Line
+	5800 1550 6000 1550
+Wire Wire Line
+	5800 1650 6000 1650
+Wire Wire Line
+	5800 1750 6000 1750
+Wire Wire Line
+	5800 1850 6000 1850
+Text Label 5800 1150 0    50   ~ 0
+SEG0
+Text Label 5800 1250 0    50   ~ 0
+SEG1
+Text Label 5800 1350 0    50   ~ 0
+SEG2
+Text Label 5800 1450 0    50   ~ 0
+SEG3
+Text Label 5800 1550 0    50   ~ 0
+SEG4
+Text Label 5800 1650 0    50   ~ 0
+SEG5
+Text Label 5800 1750 0    50   ~ 0
+SEG6
+Text Label 5800 1850 0    50   ~ 0
+SEG7
+Entry Wire Line
+	6000 1150 6100 1050
+Entry Wire Line
+	6000 1250 6100 1150
+Entry Wire Line
+	6000 1350 6100 1250
+Entry Wire Line
+	6000 1450 6100 1350
+Entry Wire Line
+	6000 1550 6100 1450
+Entry Wire Line
+	6000 1650 6100 1550
+Entry Wire Line
+	6000 1750 6100 1650
+Entry Wire Line
+	6000 1850 6100 1750
+Text GLabel 6100 950  1    50   Output ~ 0
+SEG
+Wire Wire Line
+	6950 1350 6800 1350
+Wire Wire Line
+	6950 1450 6800 1450
+Wire Wire Line
+	6950 1550 6800 1550
+Wire Wire Line
+	6950 1650 6800 1650
+Wire Wire Line
+	6950 1750 6800 1750
+Wire Wire Line
+	6950 1850 6800 1850
+Wire Wire Line
+	6950 1950 6800 1950
+Wire Wire Line
+	6950 2050 6800 2050
+Entry Wire Line
+	6700 1250 6800 1350
+Entry Wire Line
+	6700 1350 6800 1450
+Entry Wire Line
+	6700 1950 6800 2050
+Entry Wire Line
+	6700 1850 6800 1950
+Entry Wire Line
+	6700 1750 6800 1850
+Entry Wire Line
+	6700 1650 6800 1750
+Entry Wire Line
+	6700 1550 6800 1650
+Entry Wire Line
+	6700 1450 6800 1550
+Text GLabel 6700 1150 1    50   Input ~ 0
+SEG
+Wire Wire Line
+	9150 1750 9200 1750
+Wire Wire Line
+	9150 1850 9200 1850
+Wire Wire Line
+	9150 1950 9200 1950
+Wire Wire Line
+	9150 2050 9200 2050
+Entry Wire Line
+	9200 1750 9300 1650
+Entry Wire Line
+	9200 1850 9300 1750
+Entry Wire Line
+	9200 1950 9300 1850
+Entry Wire Line
+	9200 2050 9300 1950
+Text Label 6800 1350 0    50   ~ 0
+SEG0
+Text Label 6800 1450 0    50   ~ 0
+SEG1
+Text Label 6800 1550 0    50   ~ 0
+SEG2
+Text Label 6800 1650 0    50   ~ 0
+SEG3
+Text Label 6800 1750 0    50   ~ 0
+SEG4
+Text Label 6800 1850 0    50   ~ 0
+SEG5
+Text Label 6800 1950 0    50   ~ 0
+SEG6
+Text Label 6800 2050 0    50   ~ 0
+SEG7
+Text Label 9150 1750 0    50   ~ 0
+CA1
+Text Label 9150 1850 0    50   ~ 0
+CA2
+Text Label 9150 1950 0    50   ~ 0
+CA3
+Text Label 9150 2050 0    50   ~ 0
+CA4
+Text GLabel 9300 1150 1    50   Input ~ 0
+CA
+Wire Wire Line
+	5800 2050 6000 2050
+Wire Wire Line
+	5800 2150 6000 2150
+Wire Wire Line
+	5800 2250 6000 2250
+Wire Wire Line
+	5800 2350 6000 2350
+Entry Wire Line
+	6000 2050 6100 1950
+Entry Wire Line
+	6000 2150 6100 2050
+Entry Wire Line
+	6000 2250 6100 2150
+Entry Wire Line
+	6000 2350 6100 2250
+Text Label 5800 2050 0    50   ~ 0
+CA1
+Text Label 5800 2150 0    50   ~ 0
+CA2
+Text Label 5800 2250 0    50   ~ 0
+CA3
+Text Label 5800 2350 0    50   ~ 0
+CA4
+Text GLabel 6100 1950 1    50   Output ~ 0
+CA
+$Comp
+L Switch:SW_SPST_LED SW6
+U 1 1 60512C41
+P 10650 1050
+F 0 "SW6" H 10650 1385 50  0000 C CNN
+F 1 "SW_SPST_LED" H 10650 1294 50  0000 C CNN
+F 2 "" H 10650 1350 50  0001 C CNN
+F 3 "~" H 10650 1350 50  0001 C CNN
+	1    10650 1050
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST_LED SW7
+U 1 1 605143D7
+P 10650 1500
+F 0 "SW7" H 10650 1835 50  0000 C CNN
+F 1 "SW_SPST_LED" H 10650 1744 50  0000 C CNN
+F 2 "" H 10650 1800 50  0001 C CNN
+F 3 "~" H 10650 1800 50  0001 C CNN
+	1    10650 1500
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST_LED SW8
+U 1 1 60514B02
+P 10650 1950
+F 0 "SW8" H 10650 2285 50  0000 C CNN
+F 1 "SW_SPST_LED" H 10650 2194 50  0000 C CNN
+F 2 "" H 10650 2250 50  0001 C CNN
+F 3 "~" H 10650 2250 50  0001 C CNN
+	1    10650 1950
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST_LED SW9
+U 1 1 60514FAD
+P 10650 2400
+F 0 "SW9" H 10650 2735 50  0000 C CNN
+F 1 "SW_SPST_LED" H 10650 2644 50  0000 C CNN
+F 2 "" H 10650 2700 50  0001 C CNN
+F 3 "~" H 10650 2700 50  0001 C CNN
+	1    10650 2400
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR020
+U 1 1 605176A9
+P 10900 2550
+F 0 "#PWR020" H 10900 2300 50  0001 C CNN
+F 1 "GND" H 10905 2377 50  0000 C CNN
+F 2 "" H 10900 2550 50  0001 C CNN
+F 3 "" H 10900 2550 50  0001 C CNN
+	1    10900 2550
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	10900 2550 10900 2400
+Wire Wire Line
+	10900 2400 10850 2400
+Wire Wire Line
+	10900 2400 10900 2300
+Wire Wire Line
+	10900 2300 10850 2300
+Connection ~ 10900 2400
+Wire Wire Line
+	10900 2300 10900 1950
+Wire Wire Line
+	10900 1950 10850 1950
+Connection ~ 10900 2300
+Wire Wire Line
+	10900 1950 10900 1850
+Wire Wire Line
+	10900 1850 10850 1850
+Connection ~ 10900 1950
+Wire Wire Line
+	10900 1850 10900 1500
+Wire Wire Line
+	10900 1500 10850 1500
+Connection ~ 10900 1850
+Wire Wire Line
+	10900 1500 10900 1400
+Wire Wire Line
+	10900 1400 10850 1400
+Connection ~ 10900 1500
+Wire Wire Line
+	10900 950  10850 950 
+Wire Wire Line
+	10900 950  10900 1050
+Connection ~ 10900 1400
+Wire Wire Line
+	10850 1050 10900 1050
+Wire Wire Line
+	10900 1050 10900 1400
+Connection ~ 10900 1050
+$Comp
+L power:+3.3V #PWR019
+U 1 1 6057C459
+P 10400 2550
+F 0 "#PWR019" H 10400 2400 50  0001 C CNN
+F 1 "+3.3V" H 10415 2723 50  0000 C CNN
+F 2 "" H 10400 2550 50  0001 C CNN
+F 3 "" H 10400 2550 50  0001 C CNN
+	1    10400 2550
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	10400 2550 10400 2400
+Wire Wire Line
+	10400 2400 10450 2400
+Wire Wire Line
+	10400 2400 10400 1950
+Wire Wire Line
+	10400 1950 10450 1950
+Connection ~ 10400 2400
+Wire Wire Line
+	10400 1950 10400 1500
+Wire Wire Line
+	10400 1500 10450 1500
+Connection ~ 10400 1950
+Wire Wire Line
+	10450 1050 10400 1050
+Wire Wire Line
+	10400 1050 10400 1500
+Connection ~ 10400 1500
+$Comp
+L tinkerforge:JOYSTICK_BUTTON_2CH U5
+U 1 1 605A3799
+P 9700 3450
+F 0 "U5" H 10228 3503 60  0000 L CNN
+F 1 "JOYSTICK_BUTTON" H 10228 3397 60  0000 L CNN
+F 2 "" H 9700 3450 60  0000 C CNN
+F 3 "" H 9700 3450 60  0000 C CNN
+	1    9700 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2850 1950 3100 1950
+Wire Wire Line
+	5800 2450 6000 2450
+Wire Wire Line
+	5800 2550 6000 2550
+Wire Wire Line
+	5800 2650 6000 2650
+Wire Wire Line
+	5800 2750 6000 2750
+Text GLabel 6000 2450 2    50   Input ~ 0
+LED_BTN0
+Text GLabel 6000 2550 2    50   Input ~ 0
+LED_BTN1
+Text GLabel 6000 2650 2    50   Input ~ 0
+LED_BTN2
+Text GLabel 6000 2750 2    50   Input ~ 0
+LED_BTN3
+Wire Wire Line
+	10450 1400 10250 1400
+Wire Wire Line
+	10250 950  10450 950 
+Wire Wire Line
+	10450 1850 10250 1850
+Wire Wire Line
+	10450 2300 10250 2300
+Text GLabel 10250 950  0    50   Input ~ 0
+LED_BTN0
+Text GLabel 10250 1400 0    50   Input ~ 0
+LED_BTN1
+Text GLabel 10250 1850 0    50   Input ~ 0
+LED_BTN2
+Text GLabel 10250 2300 0    50   Input ~ 0
+LED_BTN3
+$Comp
+L power:+5V #PWR017
+U 1 1 60703F7E
+P 8950 4000
+F 0 "#PWR017" H 8950 3850 50  0001 C CNN
+F 1 "+5V" V 8965 4128 50  0000 L CNN
+F 2 "" H 8950 4000 50  0001 C CNN
+F 3 "" H 8950 4000 50  0001 C CNN
+	1    8950 4000
+	1    0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR018
+U 1 1 60703F84
+P 9050 3950
+F 0 "#PWR018" H 9050 3700 50  0001 C CNN
+F 1 "GND" V 9055 3822 50  0000 R CNN
+F 2 "" H 9050 3950 50  0001 C CNN
+F 3 "" H 9050 3950 50  0001 C CNN
+	1    9050 3950
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	9050 3950 9050 3700
+Wire Wire Line
+	8950 3550 9050 3550
+$Comp
+L power:+5V #PWR08
+U 1 1 6075CE9E
+P 2950 750
+F 0 "#PWR08" H 2950 600 50  0001 C CNN
+F 1 "+5V" H 2965 923 50  0000 C CNN
+F 2 "" H 2950 750 50  0001 C CNN
+F 3 "" H 2950 750 50  0001 C CNN
+	1    2950 750 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2850 1750 2950 1750
+Wire Wire Line
+	2950 1750 2950 750 
+NoConn ~ 2850 1350
+NoConn ~ 2850 1550
+NoConn ~ 2250 950 
+$Comp
+L Interface_Expansion:PCF8591 U8
+U 1 1 6016F8A3
+P 7650 3550
+F 0 "U8" H 7300 4350 50  0000 C CNN
+F 1 "PCF8591" H 7400 4250 50  0000 C CNN
+F 2 "" H 7650 3350 50  0001 C CNN
+F 3 "http://www.nxp.com/documents/data_sheet/PCF8591.pdf" H 7650 3350 50  0001 C CNN
+	1    7650 3550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR029
+U 1 1 60197EB8
+P 7650 4400
+F 0 "#PWR029" H 7650 4150 50  0001 C CNN
+F 1 "GND" H 7655 4227 50  0000 C CNN
+F 2 "" H 7650 4400 50  0001 C CNN
+F 3 "" H 7650 4400 50  0001 C CNN
+	1    7650 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR028
+U 1 1 60198A9A
+P 7650 2700
+F 0 "#PWR028" H 7650 2550 50  0001 C CNN
+F 1 "+3.3V" H 7665 2873 50  0000 C CNN
+F 2 "" H 7650 2700 50  0001 C CNN
+F 3 "" H 7650 2700 50  0001 C CNN
+	1    7650 2700
+	1    0    0    -1  
+$EndComp
+NoConn ~ 7050 3950
+NoConn ~ 7050 4050
+NoConn ~ 7050 3150
+Wire Wire Line
+	7650 2750 7650 2700
+Wire Wire Line
+	7650 4400 7650 4350
+Wire Wire Line
+	8250 3550 8550 3550
+Wire Wire Line
+	8250 3650 8550 3650
+Text Label 8250 3550 0    50   ~ 0
+I2C_SCL
+Text Label 8250 3650 0    50   ~ 0
+I2C_SDA
+Wire Wire Line
+	8950 3550 8950 4000
+Entry Wire Line
+	8550 3550 8650 3650
+Entry Wire Line
+	8550 3650 8650 3750
+Text GLabel 8650 3850 3    50   BiDi ~ 0
+I2C
+Wire Wire Line
+	9050 3050 8250 3050
+Wire Wire Line
+	8250 3150 8700 3150
+Wire Wire Line
+	8700 3150 8700 3200
+Wire Wire Line
+	8700 3200 9050 3200
+Text GLabel 8950 3350 0    50   Output ~ 0
+JOY_SW
+Wire Wire Line
+	8950 3350 9050 3350
+$Comp
+L power:+5V #PWR026
+U 1 1 602466CC
+P 6950 3450
+F 0 "#PWR026" H 6950 3300 50  0001 C CNN
+F 1 "+5V" V 6965 3578 50  0000 L CNN
+F 2 "" H 6950 3450 50  0001 C CNN
+F 3 "" H 6950 3450 50  0001 C CNN
+	1    6950 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR027
+U 1 1 60247801
+P 6950 3650
+F 0 "#PWR027" H 6950 3400 50  0001 C CNN
+F 1 "GND" V 6955 3522 50  0000 R CNN
+F 2 "" H 6950 3650 50  0001 C CNN
+F 3 "" H 6950 3650 50  0001 C CNN
+	1    6950 3650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6950 3450 7050 3450
+Wire Wire Line
+	6950 3650 7050 3650
+$Comp
+L power:GND #PWR030
+U 1 1 602577D4
+P 8250 4200
+F 0 "#PWR030" H 8250 3950 50  0001 C CNN
+F 1 "GND" H 8255 4027 50  0000 C CNN
+F 2 "" H 8250 4200 50  0001 C CNN
+F 3 "" H 8250 4200 50  0001 C CNN
+	1    8250 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR031
+U 1 1 60258222
+P 8450 4200
+F 0 "#PWR031" H 8450 4050 50  0001 C CNN
+F 1 "+3.3V" H 8465 4373 50  0000 C CNN
+F 2 "" H 8450 4200 50  0001 C CNN
+F 3 "" H 8450 4200 50  0001 C CNN
+	1    8450 4200
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8250 4200 8250 4050
+Wire Wire Line
+	8450 4200 8450 3950
+Wire Wire Line
+	8450 3950 8250 3950
+Wire Wire Line
+	8450 3950 8450 3850
+Wire Wire Line
+	8450 3850 8250 3850
+Connection ~ 8450 3950
+Wire Wire Line
+	4700 3850 4850 3850
+Wire Wire Line
+	4700 3950 4850 3950
+Wire Wire Line
+	4700 4050 4850 4050
+Wire Wire Line
+	4700 4150 4850 4150
+Wire Wire Line
+	4700 4250 4850 4250
+Wire Wire Line
+	4700 4350 4850 4350
+Wire Wire Line
+	3050 3650 2900 3650
+Entry Wire Line
+	4850 3850 4950 3950
+Entry Wire Line
+	4850 3950 4950 4050
+Entry Wire Line
+	4850 4050 4950 4150
+Entry Wire Line
+	4850 4150 4950 4250
+Entry Wire Line
+	4850 4250 4950 4350
+Entry Wire Line
+	4850 4350 4950 4450
+Text Label 4700 3950 0    50   ~ 0
+LED_ROW3
+Text Label 4700 4050 0    50   ~ 0
+LED_ROW4
+Text Label 4700 4150 0    50   ~ 0
+LED_ROW5
+Text Label 4700 4250 0    50   ~ 0
+LED_ROW6
+Text Label 4700 4350 0    50   ~ 0
+LED_ROW7
+Entry Wire Line
+	2800 3750 2900 3650
+Entry Wire Line
+	2800 3850 2900 3750
+Entry Wire Line
+	2800 3950 2900 3850
+Entry Wire Line
+	2800 4050 2900 3950
+Entry Wire Line
+	2800 4150 2900 4050
+Entry Wire Line
+	2800 4250 2900 4150
+Entry Wire Line
+	2800 4350 2900 4250
+Entry Wire Line
+	2800 4450 2900 4350
+Wire Wire Line
+	2900 4350 3050 4350
+Wire Wire Line
+	2900 4250 3050 4250
+Wire Wire Line
+	2900 4150 3050 4150
+Wire Wire Line
+	2900 4050 3050 4050
+Wire Wire Line
+	2900 3950 3050 3950
+Wire Wire Line
+	2900 3750 3050 3750
+Wire Wire Line
+	2900 3850 3050 3850
+Text Label 3050 3650 2    50   ~ 0
+LED_COL0
+Text Label 3050 3750 2    50   ~ 0
+LED_COL1
+Text Label 3050 3850 2    50   ~ 0
+LED_COL2
+Text Label 3050 3950 2    50   ~ 0
+LED_COL3
+Text Label 3050 4050 2    50   ~ 0
+LED_COL4
+Text Label 3050 4150 2    50   ~ 0
+LED_COL5
+Text Label 3050 4250 2    50   ~ 0
+LED_COL6
+Text Label 3050 4350 2    50   ~ 0
+LED_COL7
+Text GLabel 2800 4600 3    50   Input ~ 0
+LED_COLS
+Text GLabel 4950 4600 3    50   Input ~ 0
+LED_ROWS
+Text Label 4700 3850 0    50   ~ 0
+LED_ROW2
+Text Label 4700 3750 0    50   ~ 0
+LED_ROW1
+Text Label 4700 3650 0    50   ~ 0
+LED_ROW0
+Entry Wire Line
+	4850 3750 4950 3850
+Entry Wire Line
+	4850 3650 4950 3750
+Wire Wire Line
+	4700 3750 4850 3750
+Wire Wire Line
+	4700 3650 4850 3650
+$Comp
+L YEUTTERG_Generic:KY-040 SW5
+U 1 1 60135C17
+P 1050 2650
+F 0 "SW5" V 1400 2600 50  0000 L CNN
+F 1 "KY-040" V 700 2600 50  0000 L CNN
+F 2 "" H 1050 3250 50  0001 C CNN
+F 3 "" H 1050 3250 50  0001 C CNN
+F 4 "R" H 1050 2650 50  0001 C CNN "Spice_Primitive"
+F 5 "100meg" H 1050 2650 50  0001 C CNN "Spice_Model"
+F 6 "N" H 1050 2650 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    1050 2650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+5V #PWR02
+U 1 1 6024F952
+P 1300 2750
+F 0 "#PWR02" H 1300 2600 50  0001 C CNN
+F 1 "+5V" V 1315 2878 50  0000 L CNN
+F 2 "" H 1300 2750 50  0001 C CNN
+F 3 "" H 1300 2750 50  0001 C CNN
+	1    1300 2750
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR03
+U 1 1 60250022
+P 1300 2850
+F 0 "#PWR03" H 1300 2600 50  0001 C CNN
+F 1 "GND" V 1305 2722 50  0000 R CNN
+F 2 "" H 1300 2850 50  0001 C CNN
+F 3 "" H 1300 2850 50  0001 C CNN
+	1    1300 2850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1300 2850 1250 2850
+Wire Wire Line
+	1300 2750 1250 2750
+Wire Wire Line
+	1250 2450 1850 2450
+Wire Wire Line
+	1250 2550 1850 2550
+Wire Wire Line
+	1250 2650 1850 2650
+$Comp
+L capricorn:led_matrix_8x8_32mm U6
+U 1 1 602C2147
+P 3600 3650
+F 0 "U6" H 3875 4115 50  0000 C CNN
+F 1 "led_matrix_8x8_32mm" H 3875 4024 50  0000 C CNN
+F 2 "" H 3600 3650 50  0001 C CNN
+F 3 "" H 3600 3650 50  0001 C CNN
+	1    3600 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 2350 1850 2350
+Text GLabel 1650 2350 0    50   Input ~ 0
+JOY_SW
+NoConn ~ 2850 2750
+NoConn ~ 2850 2650
+Wire Wire Line
+	1650 2250 1850 2250
+Wire Wire Line
+	1650 2150 1850 2150
+Wire Wire Line
+	1650 2050 1850 2050
+Text GLabel 1650 2050 0    50   Input ~ 0
+EXP1_INTA
+Text GLabel 1650 1950 0    50   Input ~ 0
+EXP1_INTB
+Wire Wire Line
+	4300 2750 4400 2750
+$Comp
+L power:+3.3V #PWR011
+U 1 1 602DE215
+P 4300 2750
+F 0 "#PWR011" H 4300 2600 50  0001 C CNN
+F 1 "+3.3V" V 4315 2878 50  0000 L CNN
+F 2 "" H 4300 2750 50  0001 C CNN
+F 3 "" H 4300 2750 50  0001 C CNN
+	1    4300 2750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4400 2550 4400 2450
+Connection ~ 4400 2550
+Wire Wire Line
+	4400 2650 4400 2550
+$Comp
+L power:GND #PWR012
+U 1 1 602D6989
+P 4400 2450
+F 0 "#PWR012" H 4400 2200 50  0001 C CNN
+F 1 "GND" H 4400 2300 50  0000 C CNN
+F 2 "" H 4400 2450 50  0001 C CNN
+F 3 "" H 4400 2450 50  0001 C CNN
+	1    4400 2450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5100 3100 5100 3050
+Text GLabel 3450 2700 3    50   BiDi ~ 0
+I2C
+$Comp
+L power:GND #PWR014
+U 1 1 602AC969
+P 5100 3100
+F 0 "#PWR014" H 5100 2850 50  0001 C CNN
+F 1 "GND" H 5105 2927 50  0000 C CNN
+F 2 "" H 5100 3100 50  0001 C CNN
+F 3 "" H 5100 3100 50  0001 C CNN
+	1    5100 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Interface_Expansion:MCP23017_SP U2
+U 1 1 6027863F
+P 5100 1950
+F 0 "U2" H 5550 3000 50  0000 C CNN
+F 1 "MCP23017_SP Expander Module" H 5100 2900 50  0000 C CNN
+F 2 "Package_DIP:DIP-28_W7.62mm" H 5300 950 50  0001 L CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf" H 5300 850 50  0001 L CNN
+F 4 "R" H 5100 1950 50  0001 C CNN "Spice_Primitive"
+F 5 "100M" H 5100 1950 50  0001 C CNN "Spice_Model"
+F 6 "N" H 5100 1950 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    5100 1950
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 3100 1600 550  500 
+U 60140D10
+F0 "LED Matrix" 50
+F1 "led_matrix.sch" 50
+F2 "LED_PWM" I L 3100 1950 50 
+$EndSheet
+Entry Wire Line
+	3350 2350 3450 2450
+Wire Wire Line
+	2850 2350 3350 2350
+Wire Wire Line
+	2850 2450 3350 2450
+$Comp
+L MCU_Module:Arduino_UNO_R3 A1
+U 1 1 6012FC96
+P 2350 1950
+F 0 "A1" H 2600 800 50  0000 C CNN
+F 1 "Arduino_UNO_R3" H 2850 900 50  0000 C CNN
+F 2 "Module:Arduino_UNO_R3" H 2350 1950 50  0001 C CIN
+F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 2350 1950 50  0001 C CNN
+F 4 "R" H 2350 1950 50  0001 C CNN "Spice_Primitive"
+F 5 "1G" H 2350 1950 50  0001 C CNN "Spice_Model"
+F 6 "N" H 2350 1950 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    2350 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 3100 2450 3050
+Wire Wire Line
+	2350 3100 2450 3100
+Connection ~ 2350 3100
+Wire Wire Line
+	2250 3100 2250 3050
+Wire Wire Line
+	2350 3100 2250 3100
+Wire Wire Line
+	2350 3100 2350 3050
+$Comp
+L power:GND #PWR04
+U 1 1 6019FCCD
+P 2350 3100
+F 0 "#PWR04" H 2350 2850 50  0001 C CNN
+F 1 "GND" H 2355 2927 50  0000 C CNN
+F 2 "" H 2350 3100 50  0001 C CNN
+F 3 "" H 2350 3100 50  0001 C CNN
+	1    2350 3100
+	1    0    0    -1  
+$EndComp
+Entry Wire Line
+	3350 2450 3450 2550
+Text Label 3050 2450 0    50   ~ 0
+I2C_SCL
+Text Label 3050 2350 0    50   ~ 0
+I2C_SDA
+Wire Wire Line
+	4300 2750 4300 2050
+Wire Wire Line
+	4300 2050 4400 2050
+Connection ~ 4300 2750
+Text GLabel 1650 2250 0    50   Input ~ 0
+EXP2_INTA
+Text GLabel 1650 2150 0    50   Input ~ 0
+EXP2_INTB
+Text Label 1750 4450 0    50   ~ 0
+KPD0_OUT7
+Text Label 1750 4350 0    50   ~ 0
+KPD0_OUT6
+Text Label 1750 4250 0    50   ~ 0
+KPD0_OUT5
+Text Label 1750 4150 0    50   ~ 0
+KPD0_OUT4
+Text Label 1750 4050 0    50   ~ 0
+KPD0_OUT3
+Text Label 1750 3950 0    50   ~ 0
+KPD0_OUT2
+Text Label 1750 3850 0    50   ~ 0
+KPD0_OUT1
+Text Label 1750 3750 0    50   ~ 0
+KPD0_OUT0
+Wire Wire Line
+	1750 4450 2200 4450
+Wire Wire Line
+	1750 4350 2200 4350
+Wire Wire Line
+	1750 4250 2200 4250
+Wire Wire Line
+	1750 4150 2200 4150
+Wire Wire Line
+	1750 4050 2200 4050
+Wire Wire Line
+	1750 3950 2200 3950
+Wire Wire Line
+	1750 3850 2200 3850
+Wire Wire Line
+	1750 3750 2200 3750
+$Comp
+L Keypad:4x4_Keypad 96BB2-006-F1
+U 1 1 6013C55D
+P 900 4100
+F 0 "96BB2-006-F1" V 303 4633 60  0000 C CNN
+F 1 "4x4_Keypad" V 409 4633 60  0000 C CNN
+F 2 "" H 900 4100 60  0000 C CNN
+F 3 "" H 900 4100 60  0000 C CNN
+F 4 "R" H 900 4100 50  0001 C CNN "Spice_Primitive"
+F 5 "1G" H 900 4100 50  0001 C CNN "Spice_Model"
+F 6 "N" H 900 4100 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    900  4100
+	0    1    1    0   
+$EndComp
+NoConn ~ 2500 6900
+NoConn ~ 2500 7000
+NoConn ~ 2500 7100
+NoConn ~ 2500 7200
+$Comp
+L power:+3.3V #PWR022
+U 1 1 607F366E
+P 950 6500
+F 0 "#PWR022" H 950 6350 50  0001 C CNN
+F 1 "+3.3V" V 965 6628 50  0000 L CNN
+F 2 "" H 950 6500 50  0001 C CNN
+F 3 "" H 950 6500 50  0001 C CNN
+	1    950  6500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3900 6300 4000 6300
+Wire Wire Line
+	3900 6200 4000 6200
+Text GLabel 3900 6300 0    50   Output ~ 0
+EXP2_INTA
+Text GLabel 3900 6200 0    50   Output ~ 0
+EXP2_INTB
+Connection ~ 4000 7000
+Wire Wire Line
+	4000 7000 4000 6500
+Wire Wire Line
+	4000 7200 4000 7100
+Connection ~ 4000 7200
+Wire Wire Line
+	4000 7100 4000 7000
+Connection ~ 4000 7100
+Wire Wire Line
+	4000 7550 4000 7200
+$Comp
+L power:+3.3V #PWR023
+U 1 1 60735EE9
+P 4000 7550
+F 0 "#PWR023" H 4000 7400 50  0001 C CNN
+F 1 "+3.3V" H 4015 7723 50  0000 C CNN
+F 2 "" H 4000 7550 50  0001 C CNN
+F 3 "" H 4000 7550 50  0001 C CNN
+	1    4000 7550
+	-1   0    0    1   
+$EndComp
+$Comp
+L tinkerforge:TACT-SWITCH SW2
+U 1 1 60132F50
+P 3050 6750
+F 0 "SW2" H 2800 6800 50  0000 C CNN
+F 1 "TACT-SWITCH" H 3050 6914 50  0001 C CNN
+F 2 "" H 3050 6750 60  0000 C CNN
+F 3 "" H 3050 6750 60  0000 C CNN
+F 4 "R" H 3050 6750 50  0001 C CNN "Spice_Primitive"
+F 5 "100meg" H 3050 6750 50  0001 C CNN "Spice_Model"
+F 6 "N" H 3050 6750 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    3050 6750
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2550 7250 2750 7250
+Wire Wire Line
+	2550 6800 2550 7250
+Wire Wire Line
+	2500 6800 2550 6800
+Wire Wire Line
+	2600 6700 2600 7000
+Wire Wire Line
+	2600 6700 2500 6700
+Text GLabel 5700 7350 3    50   Output ~ 0
+LED_ROWS
+Text GLabel 5700 5450 1    50   Output ~ 0
+LED_COLS
+Entry Wire Line
+	5600 7200 5700 7300
+Entry Wire Line
+	5600 7100 5700 7200
+Entry Wire Line
+	5600 7000 5700 7100
+Entry Wire Line
+	5600 6900 5700 7000
+Entry Wire Line
+	5600 6800 5700 6900
+Entry Wire Line
+	5600 6700 5700 6800
+Entry Wire Line
+	5600 6600 5700 6700
+Entry Wire Line
+	5600 6500 5700 6600
+Wire Wire Line
+	5400 7200 5600 7200
+Wire Wire Line
+	5400 7100 5600 7100
+Wire Wire Line
+	5400 7000 5600 7000
+Wire Wire Line
+	5400 6900 5600 6900
+Wire Wire Line
+	5400 6800 5600 6800
+Wire Wire Line
+	5400 6700 5600 6700
+Wire Wire Line
+	5400 6600 5600 6600
+Wire Wire Line
+	5400 6500 5600 6500
+Entry Wire Line
+	5600 6300 5700 6200
+Entry Wire Line
+	5600 6200 5700 6100
+Entry Wire Line
+	5600 6100 5700 6000
+Entry Wire Line
+	5600 6000 5700 5900
+Entry Wire Line
+	5600 5900 5700 5800
+Entry Wire Line
+	5600 5800 5700 5700
+Entry Wire Line
+	5600 5700 5700 5600
+Entry Wire Line
+	5600 5600 5700 5500
+Wire Wire Line
+	5400 6300 5600 6300
+Wire Wire Line
+	5400 6200 5600 6200
+Wire Wire Line
+	5400 6100 5600 6100
+Wire Wire Line
+	5400 6000 5600 6000
+Wire Wire Line
+	5400 5900 5600 5900
+Wire Wire Line
+	5400 5800 5600 5800
+Wire Wire Line
+	5400 5700 5600 5700
+Wire Wire Line
+	5400 5600 5600 5600
+Text GLabel 3550 5450 1    50   BiDi ~ 0
+I2C
+Entry Wire Line
+	3550 5600 3650 5700
+Entry Wire Line
+	3550 5500 3650 5600
+Text Label 3750 5700 0    50   ~ 0
+I2C_SCL
+Text Label 3750 5600 0    50   ~ 0
+I2C_SDA
+Wire Wire Line
+	4000 5700 3650 5700
+Wire Wire Line
+	4000 5600 3650 5600
+Wire Wire Line
+	4700 7500 4700 7550
+$Comp
+L power:+3.3V #PWR024
+U 1 1 6038F3D3
+P 4700 5300
+F 0 "#PWR024" H 4700 5150 50  0001 C CNN
+F 1 "+3.3V" H 4715 5473 50  0000 C CNN
+F 2 "" H 4700 5300 50  0001 C CNN
+F 3 "" H 4700 5300 50  0001 C CNN
+	1    4700 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR025
+U 1 1 6038E7E0
+P 4700 7550
+F 0 "#PWR025" H 4700 7300 50  0001 C CNN
+F 1 "GND" H 4705 7377 50  0000 C CNN
+F 2 "" H 4700 7550 50  0001 C CNN
+F 3 "" H 4700 7550 50  0001 C CNN
+	1    4700 7550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Interface_Expansion:MCP23017_SP U7
+U 1 1 60389280
+P 4700 6400
+F 0 "U7" H 5150 7450 50  0000 C CNN
+F 1 "MCP23017_SP Expander Module" H 4650 7350 50  0000 C CNN
+F 2 "Package_DIP:DIP-28_W7.62mm" H 4900 5400 50  0001 L CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf" H 4900 5300 50  0001 L CNN
+F 4 "R" H 4700 6400 50  0001 C CNN "Spice_Primitive"
+F 5 "100M" H 4700 6400 50  0001 C CNN "Spice_Model"
+F 6 "N" H 4700 6400 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    4700 6400
+	1    0    0    -1  
+$EndComp
+Text GLabel 950  6300 0    50   Output ~ 0
+EXP0_INTA
+Text GLabel 950  6200 0    50   Output ~ 0
+EXP0_INTB
+Wire Wire Line
+	950  6500 1100 6500
+Wire Wire Line
+	950  6300 1100 6300
+Wire Wire Line
+	1100 6200 950  6200
+Wire Wire Line
+	2500 6500 2750 6500
+Wire Wire Line
+	2650 6750 2750 6750
+Wire Wire Line
+	2650 6600 2650 6750
+Wire Wire Line
+	2500 6600 2650 6600
+Wire Wire Line
+	2600 7000 2750 7000
+Text GLabel 650  5450 1    50   BiDi ~ 0
+I2C
+Text GLabel 3050 5450 1    50   Input ~ 0
+KPD0
+$Comp
+L power:+3.3V #PWR09
+U 1 1 602AD125
+P 1800 5300
+F 0 "#PWR09" H 1800 5150 50  0001 C CNN
+F 1 "+3.3V" H 1815 5473 50  0000 C CNN
+F 2 "" H 1800 5300 50  0001 C CNN
+F 3 "" H 1800 5300 50  0001 C CNN
+	1    1800 5300
+	1    0    0    -1  
+$EndComp
+Connection ~ 3450 7250
+Wire Wire Line
+	3450 7550 3450 7250
+$Comp
+L power:GND #PWR01
+U 1 1 6022BB12
+P 3450 7550
+F 0 "#PWR01" H 3450 7300 50  0001 C CNN
+F 1 "GND" H 3455 7377 50  0000 C CNN
+F 2 "" H 3450 7550 50  0001 C CNN
+F 3 "" H 3450 7550 50  0001 C CNN
+	1    3450 7550
+	1    0    0    -1  
+$EndComp
+Connection ~ 3450 7000
+Wire Wire Line
+	3450 7250 3350 7250
+Wire Wire Line
+	3450 7000 3450 7250
+Connection ~ 3450 6750
+Wire Wire Line
+	3450 7000 3350 7000
+Wire Wire Line
+	3450 6750 3450 7000
+Wire Wire Line
+	3450 6750 3350 6750
+Wire Wire Line
+	3450 6500 3450 6750
+Wire Wire Line
+	3450 6500 3350 6500
+Wire Wire Line
+	1100 7200 1100 7100
+Connection ~ 1100 7200
+Wire Wire Line
+	1100 7100 1100 7000
+Connection ~ 1100 7100
+Wire Wire Line
+	1100 7250 1100 7200
+$Comp
+L power:GND #PWR07
+U 1 1 601B2388
+P 1100 7250
+F 0 "#PWR07" H 1100 7000 50  0001 C CNN
+F 1 "GND" H 1105 7077 50  0000 C CNN
+F 2 "" H 1100 7250 50  0001 C CNN
+F 3 "" H 1100 7250 50  0001 C CNN
+	1    1100 7250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1800 7550 1800 7500
+$Comp
+L power:GND #PWR010
+U 1 1 601A17C4
+P 1800 7550
+F 0 "#PWR010" H 1800 7300 50  0001 C CNN
+F 1 "GND" H 1805 7377 50  0000 C CNN
+F 2 "" H 1800 7550 50  0001 C CNN
+F 3 "" H 1800 7550 50  0001 C CNN
+	1    1800 7550
+	1    0    0    -1  
+$EndComp
+Text Label 2500 6300 0    50   ~ 0
+KPD0_OUT7
+Text Label 2500 6200 0    50   ~ 0
+KPD0_OUT6
+Text Label 2500 6100 0    50   ~ 0
+KPD0_OUT5
+Text Label 2500 6000 0    50   ~ 0
+KPD0_OUT4
+Text Label 2500 5900 0    50   ~ 0
+KPD0_OUT3
+Text Label 2500 5800 0    50   ~ 0
+KPD0_OUT2
+Text Label 2500 5700 0    50   ~ 0
+KPD0_OUT1
+Text Label 2500 5600 0    50   ~ 0
+KPD0_OUT0
+Entry Wire Line
+	2950 6300 3050 6200
+Entry Wire Line
+	2950 6200 3050 6100
+Entry Wire Line
+	2950 6100 3050 6000
+Entry Wire Line
+	2950 6000 3050 5900
+Entry Wire Line
+	2950 5900 3050 5800
+Entry Wire Line
+	2950 5800 3050 5700
+Entry Wire Line
+	2950 5700 3050 5600
+Entry Wire Line
+	2950 5600 3050 5500
+Wire Wire Line
+	2500 6300 2950 6300
+Wire Wire Line
+	2500 6200 2950 6200
+Wire Wire Line
+	2500 6100 2950 6100
+Wire Wire Line
+	2500 6000 2950 6000
+Wire Wire Line
+	2500 5900 2950 5900
+Wire Wire Line
+	2500 5800 2950 5800
+Wire Wire Line
+	2500 5700 2950 5700
+Wire Wire Line
+	2500 5600 2950 5600
+Entry Wire Line
+	650  5600 750  5700
+Entry Wire Line
+	650  5500 750  5600
+Text Label 850  5700 0    50   ~ 0
+I2C_SCL
+Text Label 850  5600 0    50   ~ 0
+I2C_SDA
+Wire Wire Line
+	1100 5700 750  5700
+Wire Wire Line
+	1100 5600 750  5600
+$Comp
+L Interface_Expansion:MCP23017_SP U1
+U 1 1 60138A73
+P 1800 6400
+F 0 "U1" H 2250 7450 50  0000 C CNN
+F 1 "MCP23017_SP Expander Module" H 1750 7350 50  0000 C CNN
+F 2 "Package_DIP:DIP-28_W7.62mm" H 2000 5400 50  0001 L CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf" H 2000 5300 50  0001 L CNN
+F 4 "R" H 1800 6400 50  0001 C CNN "Spice_Primitive"
+F 5 "100M" H 1800 6400 50  0001 C CNN "Spice_Model"
+F 6 "N" H 1800 6400 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    1800 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L tinkerforge:TACT-SWITCH SW4
+U 1 1 6013442A
+P 3050 7250
+F 0 "SW4" H 2800 7300 50  0000 C CNN
+F 1 "TACT-SWITCH" H 3050 7414 50  0001 C CNN
+F 2 "" H 3050 7250 60  0000 C CNN
+F 3 "" H 3050 7250 60  0000 C CNN
+F 4 "R" H 3050 7250 50  0001 C CNN "Spice_Primitive"
+F 5 "100meg" H 3050 7250 50  0001 C CNN "Spice_Model"
+F 6 "N" H 3050 7250 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    3050 7250
+	-1   0    0    -1  
+$EndComp
+$Comp
+L tinkerforge:TACT-SWITCH SW3
+U 1 1 601339AC
+P 3050 7000
+F 0 "SW3" H 2800 7050 50  0000 C CNN
+F 1 "TACT-SWITCH" H 3050 7164 50  0001 C CNN
+F 2 "" H 3050 7000 60  0000 C CNN
+F 3 "" H 3050 7000 60  0000 C CNN
+F 4 "R" H 3050 7000 50  0001 C CNN "Spice_Primitive"
+F 5 "100meg" H 3050 7000 50  0001 C CNN "Spice_Model"
+F 6 "N" H 3050 7000 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    3050 7000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L tinkerforge:TACT-SWITCH SW1
+U 1 1 60132243
+P 3050 6500
+F 0 "SW1" H 2800 6550 50  0000 C CNN
+F 1 "TACT-SWITCH" H 3050 6664 50  0001 C CNN
+F 2 "" H 3050 6500 60  0000 C CNN
+F 3 "" H 3050 6500 60  0000 C CNN
+F 4 "R" H 3050 6500 50  0001 C CNN "Spice_Primitive"
+F 5 "100meg" H 3050 6500 50  0001 C CNN "Spice_Model"
+F 6 "N" H 3050 6500 50  0001 C CNN "Spice_Netlist_Enabled"
+	1    3050 6500
+	-1   0    0    -1  
+$EndComp
+Wire Bus Line
+	3450 2450 3450 2700
+Wire Bus Line
+	8650 3650 8650 3850
+Wire Bus Line
+	4000 1250 4000 1450
+Wire Bus Line
+	7500 6400 7700 6400
+Wire Bus Line
+	650  5450 650  5600
+Wire Bus Line
+	3550 5450 3550 5600
+Wire Bus Line
+	6100 1950 6100 2250
+Wire Bus Line
+	9300 1150 9300 1950
+Wire Bus Line
+	2800 3750 2800 4600
+Wire Bus Line
+	4950 3750 4950 4600
+Wire Bus Line
+	6700 1150 6700 1950
+Wire Bus Line
+	6100 950  6100 1750
+Wire Bus Line
+	2300 3850 2300 4650
+Wire Bus Line
+	3050 5450 3050 6200
+Wire Bus Line
+	5700 5450 5700 6200
+Wire Bus Line
+	5700 6600 5700 7350
+$EndSCHEMATC
