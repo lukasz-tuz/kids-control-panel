@@ -18,8 +18,8 @@ char keys[rows][cols] = {
     {'4', '5', '6', 'B'},
     {'7', '8', '9', 'C'},
     {'*', '0', '#', 'D'}};
-byte rowPins[rows] = {13, 12, 11, 10}; //connect to the row pinouts of the keypad
-byte colPins[cols] = {9, 8, 7, 6};     //connect to the column pinouts of the keypad
+byte rowPins[rows] = {6, 7, 8, 9}; //connect to the row pinouts of the keypad
+byte colPins[cols] = {10, 11, 12, 13};     //connect to the column pinouts of the keypad
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, rows, cols);
 
 void setup()
@@ -51,17 +51,6 @@ void loop()
     if (key != NO_KEY)
     {
       Serial.println(key);
-    }
-    
-    for (uint8_t c = 0; c < led_bar->max_color; c++)
-    {
-      led_bar->color(c, true);
-      delay(1000);
-    }
-    for (uint8_t c = 0; c < led_bar->max_color; c++)
-    {
-      led_bar->color(c, false);
-      delay(1000);
     }
   }
   else
