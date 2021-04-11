@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>D:\dev\kids-control-panel\kids-control-panel\central-panel\central-panel.sch</source>
+    <date>2021-04-06 19:22:17</date>
+    <tool>Eeschema (5.1.7)-1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>central-panel.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="U1">
+      <value>CA56-12EWA</value>
+      <footprint>Display_7Segment:CA56-12EWA</footprint>
+      <datasheet>http://www.kingbrightusa.com/images/catalog/SPEC/CA56-12EWA.pdf</datasheet>
+      <libsource lib="Display_Character" part="CA56-12EWA" description="4 digit 7 segment high efficiency red LED, common anode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B1F9D</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C72038</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B38A0</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C72038</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B401F</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C72038</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B4235</tstamp>
+    </comp>
+    <comp ref="D4">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C72043</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B4471</tstamp>
+    </comp>
+    <comp ref="D5">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C72043</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B4742</tstamp>
+    </comp>
+    <comp ref="D6">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C72043</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B4991</tstamp>
+    </comp>
+    <comp ref="D7">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C2286</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B4BF8</tstamp>
+    </comp>
+    <comp ref="D8">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C2286</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B4CDE</tstamp>
+    </comp>
+    <comp ref="D9">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C2286</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B4EF8</tstamp>
+    </comp>
+    <comp ref="D10">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C72041</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B506E</tstamp>
+    </comp>
+    <comp ref="D11">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C72041</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B50F7</tstamp>
+    </comp>
+    <comp ref="D12">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C72041</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B51ED</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>220</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C22962</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B6336</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>220</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C22962</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B6E06</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>220</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C22962</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B74D3</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>220</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C22962</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606B7C56</tstamp>
+    </comp>
+    <comp ref="SW1">
+      <value>SW_SPST_LED</value>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="capricorn" part="SW_TOUCH" description="Single Pole Single Throw (SPST) switch with LED, generic"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606F0676</tstamp>
+    </comp>
+    <comp ref="J4">
+      <value>Arduino_Conn</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x06" description="Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>60703077</tstamp>
+    </comp>
+    <comp ref="SW2">
+      <value>SW_SPST_LED</value>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="capricorn" part="SW_TOUCH" description="Single Pole Single Throw (SPST) switch with LED, generic"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>607E9BBF</tstamp>
+    </comp>
+    <comp ref="H1">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>608442F1</tstamp>
+    </comp>
+    <comp ref="H2">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>608449FC</tstamp>
+    </comp>
+    <comp ref="H3">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>60844BB5</tstamp>
+    </comp>
+    <comp ref="H4">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>60844C07</tstamp>
+    </comp>
+    <comp ref="D14">
+      <value>LED_EN_B</value>
+      <footprint>LED_SMD:LED_Inolux_IN-PI554FCH_PLCC4_5.0x5.0mm_P3.2mm</footprint>
+      <datasheet>http://www.inolux-corp.com/datasheet/SMDLED/Addressable%20LED/IN-PI554FCH.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C139127</field>
+      </fields>
+      <libsource lib="LED" part="Inolux_IN-PI554FCH" description="5050 RGB LED 4-Pin with integrated IC"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6086D160</tstamp>
+    </comp>
+    <comp ref="D13">
+      <value>LED_EN_A</value>
+      <footprint>LED_SMD:LED_Inolux_IN-PI554FCH_PLCC4_5.0x5.0mm_P3.2mm</footprint>
+      <datasheet>http://www.inolux-corp.com/datasheet/SMDLED/Addressable%20LED/IN-PI554FCH.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C139127</field>
+      </fields>
+      <libsource lib="LED" part="Inolux_IN-PI554FCH" description="5050 RGB LED 4-Pin with integrated IC"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6086E03F</tstamp>
+    </comp>
+    <comp ref="TP5">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Plated_Hole_D2.0mm</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>609BB4CE</tstamp>
+    </comp>
+    <comp ref="TP1">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Plated_Hole_D2.0mm</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>609BBC1D</tstamp>
+    </comp>
+    <comp ref="TP2">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Plated_Hole_D2.0mm</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>609BC589</tstamp>
+    </comp>
+    <comp ref="TP3">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Plated_Hole_D2.0mm</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>609BCD7D</tstamp>
+    </comp>
+    <comp ref="TP4">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Plated_Hole_D2.0mm</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>609BD1D8</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Conn_01x06</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x06" description="Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606E5AE0</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>TM1637</value>
+      <footprint>Package_SO:SOP-20_7.5x12.8mm_P1.27mm</footprint>
+      <fields>
+        <field name="LCSC">C20001</field>
+      </fields>
+      <libsource lib="tinkerforge" part="TM1637" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>606CCD0C</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>100uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C15008</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6075403B</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>10nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C57112</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>60754715</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C25804</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>607616E5</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C25804</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>60761DAF</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>100pF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1635</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>607901E7</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>100pF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1635</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>60790A1E</tstamp>
+    </comp>
+    <comp ref="TP6">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Plated_Hole_D2.0mm</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6084E129</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="TestPoint">
+      <description>test point</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x06">
+      <description>Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x06</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Display_Character" part="CA56-12EWA">
+      <description>4 digit 7 segment high efficiency red LED, common anode</description>
+      <docs>http://www.kingbrightusa.com/images/catalog/SPEC/CA56-12EWA.pdf</docs>
+      <footprints>
+        <fp>*CA56*12EWA*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">CA56-12EWA</field>
+        <field name="Footprint">Display_7Segment:CA56-12EWA</field>
+      </fields>
+      <pins>
+        <pin num="1" name="e" type="input"/>
+        <pin num="2" name="d" type="input"/>
+        <pin num="3" name="DPX" type="input"/>
+        <pin num="4" name="c" type="input"/>
+        <pin num="5" name="g" type="input"/>
+        <pin num="6" name="CA4" type="input"/>
+        <pin num="7" name="b" type="input"/>
+        <pin num="8" name="CA3" type="input"/>
+        <pin num="9" name="CA2" type="input"/>
+        <pin num="10" name="f" type="input"/>
+        <pin num="11" name="a" type="input"/>
+        <pin num="12" name="CA1" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="LED" part="Inolux_IN-PI554FCH">
+      <description>5050 RGB LED 4-Pin with integrated IC</description>
+      <docs>http://www.inolux-corp.com/datasheet/SMDLED/Addressable%20LED/IN-PI554FCH.pdf</docs>
+      <footprints>
+        <fp>LED*IN-PI554FCH*PLCC*5.0x5.0mm*P3.2mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">Inolux_IN-PI554FCH</field>
+        <field name="Footprint">LED_SMD:LED_Inolux_IN-PI554FCH_PLCC4_5.0x5.0mm_P3.2mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VSS" type="power_in"/>
+        <pin num="2" name="DIN" type="input"/>
+        <pin num="3" name="VDD" type="power_in"/>
+        <pin num="4" name="DO" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+      </fields>
+    </libpart>
+    <libpart lib="capricorn" part="SW_TOUCH">
+      <description>Single Pole Single Throw (SPST) switch with LED, generic</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_TOUCH</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="tinkerforge" part="TM1637">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TM1637</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="passive"/>
+        <pin num="2" name="SG1/KS1" type="passive"/>
+        <pin num="3" name="SG1/KS2" type="passive"/>
+        <pin num="4" name="SG1/KS3" type="passive"/>
+        <pin num="5" name="SG1/KS4" type="passive"/>
+        <pin num="6" name="SG1/KS5" type="passive"/>
+        <pin num="7" name="SG1/KS6" type="passive"/>
+        <pin num="8" name="SG1/KS7" type="passive"/>
+        <pin num="9" name="SG1/KS8" type="passive"/>
+        <pin num="10" name="GRID6" type="passive"/>
+        <pin num="11" name="GRID5" type="passive"/>
+        <pin num="12" name="GRID4" type="passive"/>
+        <pin num="13" name="GRID3" type="passive"/>
+        <pin num="14" name="GRID2" type="passive"/>
+        <pin num="15" name="GRID1" type="passive"/>
+        <pin num="16" name="VDD" type="passive"/>
+        <pin num="17" name="DIO" type="passive"/>
+        <pin num="18" name="CLK" type="passive"/>
+        <pin num="19" name="K1" type="passive"/>
+        <pin num="20" name="K2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\share\kicad\library/Connector.lib</uri>
+    </library>
+    <library logical="Connector_Generic">
+      <uri>C:\Program Files\KiCad\share\kicad\library/Connector_Generic.lib</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\share\kicad\library/Device.lib</uri>
+    </library>
+    <library logical="Display_Character">
+      <uri>C:\Program Files\KiCad\share\kicad\library/Display_Character.lib</uri>
+    </library>
+    <library logical="LED">
+      <uri>C:\Program Files\KiCad\share\kicad\library/LED.lib</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>C:\Program Files\KiCad\share\kicad\library/Mechanical.lib</uri>
+    </library>
+    <library logical="capricorn">
+      <uri>D:/dev/cad/kicad-libraries-master/capricorn.lib</uri>
+    </library>
+    <library logical="tinkerforge">
+      <uri>D:/dev/cad/kicad-libraries-master/tinkerforge.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="3" name="GND">
+      <node ref="U2" pin="1"/>
+      <node ref="C1" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="C3" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="D11" pin="1"/>
+      <node ref="D2" pin="1"/>
+      <node ref="D6" pin="1"/>
+      <node ref="TP5" pin="1"/>
+      <node ref="D13" pin="1"/>
+      <node ref="D1" pin="1"/>
+      <node ref="D12" pin="1"/>
+      <node ref="D10" pin="1"/>
+      <node ref="D9" pin="1"/>
+      <node ref="D8" pin="1"/>
+      <node ref="D7" pin="1"/>
+      <node ref="D14" pin="1"/>
+      <node ref="D5" pin="1"/>
+      <node ref="SW2" pin="2"/>
+      <node ref="SW1" pin="2"/>
+      <node ref="J4" pin="1"/>
+      <node ref="D3" pin="1"/>
+      <node ref="D4" pin="1"/>
+    </net>
+    <net code="4" name="Net-(U2-Pad20)">
+      <node ref="U2" pin="20"/>
+    </net>
+    <net code="5" name="Net-(U2-Pad19)">
+      <node ref="U2" pin="19"/>
+    </net>
+    <net code="6" name="Net-(U2-Pad11)">
+      <node ref="U2" pin="11"/>
+    </net>
+    <net code="7" name="Net-(U2-Pad10)">
+      <node ref="U2" pin="10"/>
+    </net>
+    <net code="8" name="/CA4">
+      <node ref="U2" pin="12"/>
+      <node ref="U1" pin="6"/>
+    </net>
+    <net code="9" name="/CA3">
+      <node ref="U2" pin="13"/>
+      <node ref="U1" pin="8"/>
+    </net>
+    <net code="10" name="/CA2">
+      <node ref="U1" pin="9"/>
+      <node ref="U2" pin="14"/>
+    </net>
+    <net code="11" name="/CA1">
+      <node ref="U1" pin="12"/>
+      <node ref="U2" pin="15"/>
+    </net>
+    <net code="12" name="/LED_D">
+      <node ref="J1" pin="6"/>
+      <node ref="R3" pin="2"/>
+    </net>
+    <net code="13" name="/DIO">
+      <node ref="J4" pin="2"/>
+      <node ref="U2" pin="17"/>
+      <node ref="R6" pin="2"/>
+      <node ref="C2" pin="1"/>
+    </net>
+    <net code="14" name="/CLK">
+      <node ref="U2" pin="18"/>
+      <node ref="C1" pin="1"/>
+      <node ref="J4" pin="3"/>
+      <node ref="R5" pin="2"/>
+    </net>
+    <net code="15" name="/SEG_A">
+      <node ref="U1" pin="11"/>
+      <node ref="U2" pin="2"/>
+    </net>
+    <net code="16" name="/ENABLE_A">
+      <node ref="SW1" pin="3"/>
+      <node ref="J4" pin="4"/>
+    </net>
+    <net code="17" name="/ENABLE_B">
+      <node ref="J4" pin="5"/>
+      <node ref="SW2" pin="3"/>
+    </net>
+    <net code="18" name="/DPX">
+      <node ref="U2" pin="9"/>
+      <node ref="U1" pin="3"/>
+    </net>
+    <net code="19" name="/SEG_G">
+      <node ref="U2" pin="8"/>
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="20" name="/SEG_F">
+      <node ref="U2" pin="7"/>
+      <node ref="U1" pin="10"/>
+    </net>
+    <net code="21" name="/SEG_E">
+      <node ref="U1" pin="1"/>
+      <node ref="U2" pin="6"/>
+    </net>
+    <net code="22" name="/SEG_D">
+      <node ref="U1" pin="2"/>
+      <node ref="U2" pin="5"/>
+    </net>
+    <net code="23" name="/SEG_C">
+      <node ref="U1" pin="4"/>
+      <node ref="U2" pin="4"/>
+    </net>
+    <net code="24" name="/SEG_B">
+      <node ref="U1" pin="7"/>
+      <node ref="U2" pin="3"/>
+    </net>
+    <net code="25" name="VCC">
+      <node ref="D14" pin="3"/>
+      <node ref="SW1" pin="1"/>
+      <node ref="D13" pin="3"/>
+      <node ref="SW2" pin="1"/>
+      <node ref="U2" pin="16"/>
+      <node ref="J4" pin="6"/>
+      <node ref="TP6" pin="1"/>
+      <node ref="R5" pin="1"/>
+      <node ref="R6" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="C4" pin="1"/>
+    </net>
+    <net code="26" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2"/>
+      <node ref="D2" pin="2"/>
+      <node ref="D3" pin="2"/>
+      <node ref="TP1" pin="1"/>
+      <node ref="R4" pin="1"/>
+    </net>
+    <net code="27" name="Net-(D10-Pad2)">
+      <node ref="R3" pin="1"/>
+      <node ref="D12" pin="2"/>
+      <node ref="D11" pin="2"/>
+      <node ref="D10" pin="2"/>
+      <node ref="TP4" pin="1"/>
+    </net>
+    <net code="28" name="Net-(D7-Pad2)">
+      <node ref="TP3" pin="1"/>
+      <node ref="R2" pin="1"/>
+      <node ref="D7" pin="2"/>
+      <node ref="D8" pin="2"/>
+      <node ref="D9" pin="2"/>
+    </net>
+    <net code="29" name="Net-(D4-Pad2)">
+      <node ref="R1" pin="1"/>
+      <node ref="D4" pin="2"/>
+      <node ref="TP2" pin="1"/>
+      <node ref="D5" pin="2"/>
+      <node ref="D6" pin="2"/>
+    </net>
+    <net code="30" name="/LED_EN_B">
+      <node ref="D14" pin="2"/>
+      <node ref="J1" pin="2"/>
+    </net>
+    <net code="31" name="/LED_C">
+      <node ref="R2" pin="2"/>
+      <node ref="J1" pin="5"/>
+    </net>
+    <net code="32" name="/LED_B">
+      <node ref="R1" pin="2"/>
+      <node ref="J1" pin="4"/>
+    </net>
+    <net code="33" name="/LED_A">
+      <node ref="J1" pin="3"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="34" name="Net-(D13-Pad4)">
+      <node ref="D13" pin="4"/>
+    </net>
+    <net code="35" name="Net-(D14-Pad4)">
+      <node ref="D14" pin="4"/>
+    </net>
+    <net code="36" name="/LED_EN_A">
+      <node ref="D13" pin="2"/>
+      <node ref="J1" pin="1"/>
+    </net>
+  </nets>
+</export>
