@@ -1,142 +1,117 @@
-#include <RGB_LED.h>
-#include "controlpanel_keypad.h"
-#include "controlpanel_encoder.h"
+#include <Adafruit_MCP23017.h>
 
-namespace controlpanel
+inline void _configurePins(Adafruit_MCP23017 *gpios, byte *pins, byte num_pins, byte mode)
 {
-    // For debugging
-    void _scanI2C()
+    uint8_t mode_internal;
+    switch (mode)
     {
-        uint8_t nDevices = 0;
-
-        for (byte address = 1; address < 127; ++address)
-        {
-            // The i2c_scanner uses the return value of
-            // the Write.endTransmisstion to see if
-            // a device did acknowledge to the address.
-            Wire.beginTransmission(address);
-            byte error = Wire.endTransmission();
-
-            if (error == 0)
-            {
-                Serial.print("I2C device found at address 0x");
-                if (address < 16)
-                {
-                    Serial.print("0");
-                }
-                Serial.print(address, HEX);
-                Serial.println("  !");
-
-                ++nDevices;
-            }
-            else if (error == 4)
-            {
-                Serial.print("Unknown error at address 0x");
-                if (address < 16)
-                {
-                    Serial.print("0");
-                }
-                Serial.println(address, HEX);
-            }
-        }
-        if (nDevices == 0)
-        {
-            Serial.println("No I2C devices found\n");
-        }
-        else
-        {
-            Serial.println("done\n");
-        }
+    case OUTPUT:
+        mode_internal = OUTPUT;
+        break;
+    case INPUT:
+    case INPUT_PULLUP:
+        mode_internal = INPUT;
+        break;
+    default:
+        mode_internal = INPUT;
+        break;
     }
-
-    typedef enum LedSegments
+    for (byte i = 0; i < num_pins; i++)
     {
-        a = 0,
-        b = 1,
-        c = 2,
-        d = 3,
-        e = 4,
-        f = 5,
-        g = 6,
-        dpx = 7
-    };
+        gpios->pinMode(pins[i], mode_internal);
+        if (mode == INPUT_PULLUP)
+            gpios->pullUp(pins[i], 1);
+        else
+            gpios->pullUp(pins[i], 0);
+    }
+}
 
-    class LedBar
+inline void _configurePins(byte *pins, byte num_pins, byte mode)
+{
+    for (byte i = 0; i < num_pins; i++)
     {
-    public:
-        typedef enum ledColor
-        {
-            blue = 0,
-            orange,
-            green,
-            yellow,
-            max_color
-        };
+        pinMode(pins[i], mode);
+    }
+}
 
-        explicit LedBar();
-        explicit LedBar(Adafruit_MCP23017 *gpios)
-        {
-            LedBar::gpios = gpios;
-        }
+inline void _configurePins(byte pin, byte mode)
+{
+    pinMode(pin, mode);
+}
 
-        void begin(uint8_t y, uint8_t o, uint8_t g, uint8_t b)
-        {
-            LedBar::pins[yellow] = y;
-            LedBar::pins[orange] = o;
-            LedBar::pins[green] = g;
-            LedBar::pins[blue] = b;
+// GPIO expanders
+#define GPIOA_ADDR 0
+#define GPIOB_ADDR 4
 
-            for (uint8_t nPin = 0; nPin < LedBar::numPins; nPin++)
-            {
-                LedBar::pinMode(LedBar::pins[nPin], OUTPUT);
-                LedBar::digitalWrite(LedBar::pins[nPin], 0);
-            }
-        }
+// Pins for power on/off switches
 
-        void off()
-        {
-            for (uint8_t nPin = 0; nPin < LedBar::numPins; nPin++)
-            {
-                LedBar::digitalWrite(LedBar::pins[nPin], 0);
-            }
-        }
+// Pins for enable/disable touch buttons
+byte enable_a_pin = 8;
+byte enable_b_pin = 9;
 
-        void color(uint8_t c, bool on)
-        {
-            if (c < max_color)
-            {
-                LedBar::digitalWrite(LedBar::pins[c], (uint8_t)on);
-            }
-        }
+// Alphanumeric keypad on GPIOA
+const byte rows = 4;
+const byte cols = 4;
+char alphanumeric[rows][cols] = {
+    {'1', '2', '3', 'A'},
+    {'4', '5', '6', 'B'},
+    {'7', '8', '9', 'C'},
+    {'*', '0', '#', 'D'}};
+byte colPins[rows] = {4, 5, 6, 7};
+byte rowPins[cols] = {0, 1, 2, 3};
 
-    private:
-        Adafruit_MCP23017 *gpios = NULL;
-        static const uint8_t numPins = 4;
-        uint8_t pins[numPins] = {0};
+// 4x4 keypad on GPIOA
+char matrix[rows][cols] = {
+    {'0', '1', '2', '3'},
+    {'4', '5', '6', '7'},
+    {'8', '9', 'A', 'B'},
+    {'C', 'D', 'E', 'F'}};
+byte matrixRowPins[rows] = {11, 10, 9, 8};
+byte matrixColPins[cols] = {15, 14, 13, 12};
 
-        void pinMode(uint8_t pin, uint8_t d)
-        {
-            if (LedBar::gpios != NULL)
-            {
-                gpios->pinMode(pin, d);
-            }
-            else
-            {
-                pinMode(pin, d);
-            }
-        }
+// Pushbuttons on GPIOB
+const byte buttonsRows = 1;
+const byte buttonsCols = 4;
+char buttons[buttonsRows][buttonsCols] = {'X', 'Y', 'Z', '@'};
+byte buttonRowPins[buttonsRows] = {0};
+byte buttonColPins[buttonsCols] = {1, 2, 3, 4};
 
-        void digitalWrite(uint8_t pin, uint8_t d)
-        {
-            if (LedBar::gpios != NULL)
-            {
-                gpios->digitalWrite(pin, d);
-            }
-            else
-            {
-                digitalWrite(pin, d);
-            }
-        }
-    };
+// Displays
 
-} // namespace controlpanel
+// 7-seg 4-digit display
+#define DISPLAY_SIZE 4
+#define DISP_CLK_PIN 7
+#define DISP_DIO_PIN 8
+
+// 8x8 LED matrix
+#define LED_MATRIX_SIZE 8
+#define LED_MATRIX_CLK_PIN 5
+#define LED_MATRIX_DIO_PIN 4
+
+// RGB LED
+#define RBG_RED 9
+#define RGB_GRN 10
+#define RGB_BLU 11
+
+// LED bar
+#define LED_BAR_Y 0
+#define LED_BAR_O 1
+#define LED_BAR_R 12
+#define LED_BAR_B 13
+
+// Joystick
+byte joystick_switch = 6;
+#define JOYSTICK_X A1
+#define JOYSTICK_Y A0
+
+// Rotary Encoder on GPIOB
+byte encoder_switch = 5;
+#define ENCODER_PIN_A 2
+#define ENCODER_PIN_B 3
+
+#define DEFAULT_MODE 0
+#define RGB_LED_MODE 0
+#define LED_BAR_MODE 1
+#define LED_MATRIX_MODE 2
+#define LCD_MODE 3
+#define LAST_MODE 4

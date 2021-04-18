@@ -1,6 +1,5 @@
 #include <Key.h>
 #include <Keypad.h>
-#include <Adafruit_MCP23017.h>
 
 class PanelKeypad : public Keypad
 {

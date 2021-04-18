@@ -35,10 +35,11 @@
             "includePath": [
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\variants\\standard",
-                "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\Keypad\\src",
+                "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\Encoder",
                 "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\Adafruit_MCP23017_Arduino_Library",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\libraries\\Wire\\src",
-                "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\Encoder",
+                "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\TM1637",
+                "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\Keypad\\src",
                 "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include",
                 "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include-fixed",
                 "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\avr\\include"
