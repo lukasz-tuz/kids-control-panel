@@ -161,8 +161,6 @@ void setup()
   rgb_led.setColor(c);
 
   // led_bar.off();
-  // led_bar.color(led_bar.yellow, true);
-  // led_bar.color(led_bar.orange, true);
 }
 
 void loop()
@@ -170,7 +168,7 @@ void loop()
   // Read state of Enable pins
   byte enable_a = gpiosB->digitalRead(enable_a_pin);
 
-  if (true)
+  if (enable_a)
   {
     // Poll aplhanumeric keypad, key matrix, buttons, joystick, encoder
     char character = alpha_keypad.getKey();
