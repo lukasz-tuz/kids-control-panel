@@ -8,6 +8,10 @@
 #include "controlpanel_keypad.h"
 #include "controlpanel_ledbar.h"
 
+/**
+  From Arduino I2C examples.
+  Scan I2C bus for devices, print addresses on Serial.
+ */
 void _scanI2C()
 {
   uint8_t nDevices = 0;
@@ -52,6 +56,13 @@ void _scanI2C()
   }
 }
 
+/**
+ * @brief Convert a character based control mode selection into
+ * an encoded value.
+ * 
+ * @param b Character received from input device
+ * @return uint8_t uint8 encoded control mode for the panel.
+ */
 uint8_t get_controls_mode(char b)
 {
   uint8_t mode;
@@ -78,6 +89,19 @@ uint8_t get_controls_mode(char b)
   return mode;
 }
 
+/**
+ * @brief Increment/decrement value with wrap around at value defined by size.
+ * 
+ * If incrementing (direction > 0), value will wrap around to zero when specified
+ * size is reached.
+ * 
+ * If decrementing (direction < 0), value wraps around to size - 1 when zero is reached.
+ * 
+ * @param value Value to be modified.
+ * @param direction Determines if value is to be incremented or decremented.
+ * @param size Size at which value is to be wrapped.
+ * @return uint8_t Modified value.
+ */
 uint8_t wrap_around(uint8_t value, int direction, uint8_t size)
 {
   uint8_t v = value;
@@ -100,35 +124,70 @@ uint8_t wrap_around(uint8_t value, int direction, uint8_t size)
 
 using namespace rgbled;
 
+/* 
+Instantiate objects for control panel's internals.
+
+GPIO Expanders go firs.
+*/
 auto gpiosA = new Adafruit_MCP23017();
 auto gpiosB = new Adafruit_MCP23017();
 
+/* Keypad panel control objects */
 PanelKeypad alpha_keypad = PanelKeypad(gpiosA, makeKeymap(alphanumeric), rowPins, colPins, rows, cols);
 PanelKeypad matrix_keypad = PanelKeypad(gpiosA, makeKeymap(matrix), matrixRowPins, matrixColPins, rows, cols);
 PanelKeypad button_keypad = PanelKeypad(gpiosB, makeKeymap(buttons), buttonRowPins, buttonColPins, buttonsRows, buttonsCols);
 
+/* Rotary encoder */
 Encoder knob(ENCODER_PIN_A, ENCODER_PIN_B);
 
+/* Displays */
 TM1637Display seven_seg = TM1637Display(DISP_CLK_PIN, DISP_DIO_PIN);
 uint8_t seven_seg_brightness = 3;
 
 TM1637Display led_matrix = TM1637Display(LED_MATRIX_CLK_PIN, LED_MATRIX_DIO_PIN);
 uint8_t led_matrix_brightness = 3;
 
+/* Common wrappers for hardware-specific objects */
 Display char_disp = Display(DISPLAY_SIZE);
 Display matrix_disp = Display(LED_MATRIX_SIZE);
 
+/* The RGB LED module */
 RgbLed rgb_led = RgbLed(RBG_RED, RGB_GRN, RGB_BLU);
+
+/* Custom LED bar module */
 //LedBar led_bar = LedBar(LED_BAR_Y, LED_BAR_O, LED_BAR_R, LED_BAR_B);
 
+/**
+ * @brief Mode determines which modules are controlled by joystick and encoder.
+ * Mode is swtiched on user input. @see pushbutton.
+ * 
+ */
 uint8_t current_mode = DEFAULT_MODE;
+
+/**
+ * @brief Last recorded position of rotary encoder, used to determine rotation direction.
+ * 
+ */
 int last_knob_position = 0;
 
+/**
+ * @brief Selected color for RGB LED module.
+ * 
+ */
 Color stored_rgb_led = Color(0, 0, 0);
 
+/**
+ * @brief Internal display buffer for LED matrix module.
+ * 
+ */
 uint8_t led_matrix_buffer[LED_MATRIX_SIZE] = {0};
 uint8_t coord_x = 0;
 uint8_t coord_y = 0;
+
+/**
+ * @brief When set, locks changes of coord_x/coord_y variables on subsequent calls for loop().
+ * 
+ */
 bool coords_update = false;
 
 void setup()
@@ -139,18 +198,20 @@ void setup()
     ; // Leonardo: wait for serial monitor
   Serial.println("Initialzing...");
 
+  // I2C scan only called for debug purposes.
   _scanI2C();
 
   gpiosA->begin(GPIOA_ADDR, &Wire);
   gpiosB->begin(GPIOB_ADDR, &Wire);
 
-  // configure pins for buttons/switches which are not part of
+  // Configure pins for buttons/switches which are not part of
   // scanning keypad matrix.
   _configurePins(gpiosB, &joystick_switch, 1, INPUT_PULLUP);
   _configurePins(gpiosB, &encoder_switch, 1, INPUT_PULLUP);
   _configurePins(gpiosB, &enable_a_pin, 1, INPUT_PULLUP);
   _configurePins(gpiosB, &enable_b_pin, 1, INPUT_PULLUP);
 
+  // Initialize displays
   seven_seg.setBrightness(seven_seg_brightness, true);
   seven_seg.clear();
 
@@ -195,6 +256,7 @@ void loop()
 
     if (current_mode == RGB_LED_MODE)
     {
+      // Map raw values from joy_x/_y to [-1:1] range
       float x = (((float)joy_x / 1024) - 0.5) * 2;
       float y = (((float)joy_y / 1024) - 0.5) * 2;
 
@@ -213,7 +275,7 @@ void loop()
       }
       else
       {
-        // Update RGB LD - brightness
+        // Update RGB LED's brightness
         if (delta != 0)
         {
           rgb_led.changeBrightness(delta);
@@ -229,13 +291,20 @@ void loop()
     }
     else if (current_mode == LED_MATRIX_MODE)
     {
+      // Map raw values from joy_x/_y to [-1:1] range
+      //TODO: wrap joystick handling in a class, make this a method.
       float x = (((float)joy_x / 1024) - 0.5) * 2;
       float y = (((float)joy_y / 1024) - 0.5) * 2;
 
+      /*
+        If joystick is pushed in either direction, update display.
+      */
       if ((abs(x) > 0.6 or abs(y) > 0.6) and coords_update == false)
       {
+        // Lock update so that each push of joystick only moves LEDs by one
         coords_update = true;
 
+        // x coordinate
         if (abs(x) > 0.6)
         {
           int direction_x = (int)(x / abs(x));
@@ -248,12 +317,13 @@ void loop()
           coord_y = wrap_around(coord_y, direction_y, LED_MATRIX_SIZE);
         }
 
+        // XOR operation done so that LEDs can be switched on/off
         led_matrix_buffer[coord_x] ^= (1 << coord_y);
-
         led_matrix.setSegments(led_matrix_buffer, LED_MATRIX_SIZE);
       }
       else if ((abs(x) < 0.1 and abs(y) < 0.1) and coords_update == true)
       {
+        // Joystick in neutral position, release lock
         coords_update = false;
       }
     }
@@ -263,15 +333,15 @@ void loop()
 
     if (character != NO_KEY)
     {
-      char_disp.set_character(character);
       // Update 7seg display
+      char_disp.set_character(character);
       seven_seg.setSegments(char_disp.get_buffer(), DISPLAY_SIZE);
     }
 
     if (matrix_key != NO_KEY)
     {
-      matrix_disp.set_character(matrix_key);
       // Update LED matrix
+      matrix_disp.set_character(matrix_key);
       led_matrix.setSegments(matrix_disp.get_buffer(), LED_MATRIX_SIZE);
     }
   }

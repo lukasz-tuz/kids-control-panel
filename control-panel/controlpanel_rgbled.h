@@ -11,7 +11,10 @@ namespace rgbled
     }
     inline static uint8_t scale(uint8_t i, uint8_t scale, uint8_t max_value = 255) { return (max_value * i / scale); }
 
-    // From esphome's color.h
+    /**
+     * @brief From esphome's color.h. Defines RBG or HSV colors, it's transformations and operations.
+     * 
+     */
     struct Color
     {
         union
@@ -275,7 +278,8 @@ namespace rgbled
     {
     }
 
-    /* Convert cartesian coordinates to RGB
+    /** 
+    * @brief Convert cartesian coordinates to RGB
     * 
     * @param {float} x - x coordinate in range -1 to 1
     * @param {float} y - y coordinate in range -1 to 1

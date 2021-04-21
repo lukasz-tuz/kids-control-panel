@@ -1,3 +1,7 @@
+/**
+ * @brief 
+ * 
+ */
 
 class Display
 {
@@ -22,11 +26,22 @@ public:
         0b01110001  // F
     };
 
+    /**
+     * @brief Construct a new Display object
+     * 
+     * @param size Number of characters in the display.
+     */
     Display(uint8_t size)
     {
         Display::size = size;
     }
 
+    /**
+     * @brief Map character into 7seg display segments.
+     * 
+     * @param c Character to be converted, [0-9A-Z] range
+     * @return uint8_t Bit map with segments to be turned on for specified character.
+     */
     uint8_t map_cahracter(char c)
     {
         // ASCII digits: 0x30 - 0x39
@@ -40,6 +55,11 @@ public:
         return digitToSegment[index];
     }
 
+    /**
+     * @brief Writes the character c to display buffer
+     * 
+     * @param c The Character.
+     */
     void set_character(char c)
     {
         if (c == '*' or c == '#')
@@ -53,6 +73,11 @@ public:
         ++buf_ptr %= size;
     }
 
+    /**
+     * @brief Get the disaplay buffer pointer
+     * 
+     * @return uint8_t Number representing current place in the display
+     */
     uint8_t get_ptr()
     {
         return Display::buf_ptr;
