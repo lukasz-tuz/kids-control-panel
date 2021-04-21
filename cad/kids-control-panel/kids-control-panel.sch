@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 2
+Sheet 1 3
 Title ""
 Date ""
 Rev ""
@@ -202,10 +202,6 @@ Text GLabel 7500 6400 0    50   BiDi ~ 0
 I2C
 Text GLabel 4000 1450 3    50   BiDi ~ 0
 I2C
-Wire Wire Line
-	1850 1350 1750 1350
-Wire Wire Line
-	1750 1350 1750 800 
 Text GLabel 4400 1750 0    50   Output ~ 0
 EXP1_INTB
 Text GLabel 4400 1850 0    50   Output ~ 0
@@ -1487,4 +1483,10 @@ Wire Bus Line
 	5700 5450 5700 6200
 Wire Bus Line
 	5700 6600 5700 7350
+$Sheet
+S 5600 3800 900  800 
+U 60804078
+F0 "Power Distribution" 50
+F1 "power-distrib.sch" 50
+$EndSheet
 $EndSCHEMATC

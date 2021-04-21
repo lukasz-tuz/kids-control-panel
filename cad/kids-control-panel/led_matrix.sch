@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 2
+Sheet 2 3
 Title ""
 Date ""
 Rev ""
@@ -80,27 +80,8 @@ F 6 "" H 5000 3800 50  0001 C CNN "Spice_Primitive"
 	1    5000 3800
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Device:LED D5
-U 1 1 60266281
-P 5450 3800
-F 0 "D5" V 5489 3682 50  0000 R CNN
-F 1 "LED" V 5398 3682 50  0000 R CNN
-F 2 "" H 5450 3800 50  0001 C CNN
-F 3 "~" H 5450 3800 50  0001 C CNN
-F 4 "" H 5450 3800 50  0001 C CNN "Spice_Model"
-F 5 "" H 5450 3800 50  0001 C CNN "Spice_Netlist_Enabled"
-F 6 "" H 5450 3800 50  0001 C CNN "Spice_Primitive"
-	1    5450 3800
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	5450 3550 5450 3650
 Wire Wire Line
 	5000 3650 5000 3550
-Connection ~ 5000 3550
-Wire Wire Line
-	5000 3550 5450 3550
 Wire Wire Line
 	4550 3650 4550 3550
 Connection ~ 4550 3550
@@ -126,11 +107,6 @@ Connection ~ 4550 4050
 Wire Wire Line
 	4550 4050 4550 3950
 Wire Wire Line
-	5000 4050 5450 4050
-Wire Wire Line
-	5450 4050 5450 3950
-Connection ~ 5000 4050
-Wire Wire Line
 	4550 4050 4050 4050
 Wire Wire Line
 	4050 4050 4050 3950
@@ -144,5 +120,18 @@ LED_PWM
 Text HLabel 2450 3550 0    50   Input ~ 0
 LED_PWM
 Wire Wire Line
-	2450 3550 3600 3550
+	2450 3550 2700 3550
+$Comp
+L Device:R R1
+U 1 1 6067D476
+P 2850 3550
+F 0 "R1" V 3057 3550 50  0000 C CNN
+F 1 "220" V 2966 3550 50  0000 C CNN
+F 2 "" V 2780 3550 50  0001 C CNN
+F 3 "~" H 2850 3550 50  0001 C CNN
+	1    2850 3550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3000 3550 3600 3550
 $EndSCHEMATC
