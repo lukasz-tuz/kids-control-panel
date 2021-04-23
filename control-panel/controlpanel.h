@@ -1,5 +1,13 @@
 #include <Adafruit_MCP23017.h>
 
+/**
+ * @brief Wrapper for configuring GPIO pins behind MCP23017 I2C IO expander.
+ * 
+ * @param gpios Pointer to Adafruit_MCP23017 instance associated with pins being configured.
+ * @param pins {Array} Array of pin numbers _on expander instance defined by *gpios_ to configure.
+ * @param num_pins Length of pins array, in bytes.
+ * @param mode Mode (input/input_pullup/output) to which pins are to be configured.
+ */
 inline void _configurePins(Adafruit_MCP23017 *gpios, byte *pins, byte num_pins, byte mode)
 {
     uint8_t mode_internal;
@@ -26,6 +34,43 @@ inline void _configurePins(Adafruit_MCP23017 *gpios, byte *pins, byte num_pins, 
     }
 }
 
+/**
+ * @brief Wrapper for configuring a GPIO pin on MCP23017 I2C IO expander.
+ * 
+ * @param gpios Pointer to Adafruit_MCP23017 instance associated with pins being configured.
+ * @param pin Pin numbers _on expander instance defined by *gpios_ to configure.
+ * @param mode Mode (input/input_pullup/output) to which pins are to be configured.
+ */
+inline void _configurePins(Adafruit_MCP23017 *gpios, byte pin, byte mode)
+{
+    uint8_t mode_internal;
+    switch (mode)
+    {
+    case OUTPUT:
+        mode_internal = OUTPUT;
+        break;
+    case INPUT:
+    case INPUT_PULLUP:
+        mode_internal = INPUT;
+        break;
+    default:
+        mode_internal = INPUT;
+        break;
+    }
+    gpios->pinMode(pin, mode_internal);
+    if (mode == INPUT_PULLUP)
+        gpios->pullUp(pin, 1);
+    else
+        gpios->pullUp(pin, 0);
+}
+
+/**
+ * @brief Configures pin modes for an array of native Arduino GPIOs.
+ * 
+ * @param pins {Array} Array of pin numbers to configure.
+ * @param num_pins Length of pins array, in bytes.
+ * @param mode Mode (input/input_pullup/output) to which pins are to be configured.
+ */
 inline void _configurePins(byte *pins, byte num_pins, byte mode)
 {
     for (byte i = 0; i < num_pins; i++)
@@ -34,6 +79,12 @@ inline void _configurePins(byte *pins, byte num_pins, byte mode)
     }
 }
 
+/**
+ * @brief Wrapper for Arduino's native pinMode function.
+ * 
+ * @param pin Pin number to configure.
+ * @param mode Mode to which configure selected pin.
+ */
 inline void _configurePins(byte pin, byte mode)
 {
     pinMode(pin, mode);
@@ -100,12 +151,12 @@ byte buttonColPins[buttonsCols] = {1, 2, 3, 4};
 #define LED_BAR_B 13
 
 // Joystick
-byte joystick_switch = 6;
+#define JOYSTICK_SWITCH 6 // on gpiosB
 #define JOYSTICK_X A1
 #define JOYSTICK_Y A0
 
 // Rotary Encoder on GPIOB
-byte encoder_switch = 5;
+#define ENCODER_SWITCH 5
 #define ENCODER_PIN_A 2
 #define ENCODER_PIN_B 3
 

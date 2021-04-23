@@ -1,3 +1,4 @@
+
 #include <Arduino.h>
 #include <Encoder.h>
 #include <Adafruit_MCP23017.h>
@@ -7,6 +8,7 @@
 #include "controlpanel_display.h"
 #include "controlpanel_keypad.h"
 #include "controlpanel_ledbar.h"
+#include "controlpanel_joystick.h"
 
 /**
   From Arduino I2C examples.
@@ -123,14 +125,16 @@ uint8_t wrap_around(uint8_t value, int direction, uint8_t size)
 }
 
 using namespace rgbled;
+using namespace joystick;
 
 /* 
 Instantiate objects for control panel's internals.
 
-GPIO Expanders go firs.
+GPIO Expanders go first.
 */
 auto gpiosA = new Adafruit_MCP23017();
 auto gpiosB = new Adafruit_MCP23017();
+auto adc = new Adafruit_PCF8591();
 
 /* Keypad panel control objects */
 PanelKeypad alpha_keypad = PanelKeypad(gpiosA, makeKeymap(alphanumeric), rowPins, colPins, rows, cols);
@@ -138,7 +142,10 @@ PanelKeypad matrix_keypad = PanelKeypad(gpiosA, makeKeymap(matrix), matrixRowPin
 PanelKeypad button_keypad = PanelKeypad(gpiosB, makeKeymap(buttons), buttonRowPins, buttonColPins, buttonsRows, buttonsCols);
 
 /* Rotary encoder */
-Encoder knob(ENCODER_PIN_A, ENCODER_PIN_B);
+Encoder knob = Encoder(ENCODER_PIN_A, ENCODER_PIN_B);
+
+/* Joystick */
+Joystick joy = Joystick(adc, JOYSTICK_X, JOYSTICK_Y);
 
 /* Displays */
 TM1637Display seven_seg = TM1637Display(DISP_CLK_PIN, DISP_DIO_PIN);
@@ -203,11 +210,12 @@ void setup()
 
   gpiosA->begin(GPIOA_ADDR, &Wire);
   gpiosB->begin(GPIOB_ADDR, &Wire);
+  adc->begin();
 
   // Configure pins for buttons/switches which are not part of
   // scanning keypad matrix.
-  _configurePins(gpiosB, &joystick_switch, 1, INPUT_PULLUP);
-  _configurePins(gpiosB, &encoder_switch, 1, INPUT_PULLUP);
+  _configurePins(gpiosB, JOYSTICK_SWITCH, INPUT_PULLUP);
+  _configurePins(gpiosB, ENCODER_SWITCH, INPUT_PULLUP);
   _configurePins(gpiosB, &enable_a_pin, 1, INPUT_PULLUP);
   _configurePins(gpiosB, &enable_b_pin, 1, INPUT_PULLUP);
 
@@ -235,10 +243,8 @@ void loop()
     char character = alpha_keypad.getKey();
     char matrix_key = matrix_keypad.getKey();
     char pushbutton = button_keypad.getKey();
-    int joy_x = analogRead(JOYSTICK_X);
-    int joy_y = analogRead(JOYSTICK_Y);
-    byte joy_sw = gpiosB->digitalRead(joystick_switch);
-    byte enc_sw = gpiosB->digitalRead(encoder_switch);
+    byte joy_sw = gpiosB->digitalRead(JOYSTICK_SWITCH);
+    byte enc_sw = gpiosB->digitalRead(ENCODER_SWITCH);
     int position = knob.read();
     int delta = position - last_knob_position;
     last_knob_position = position;
@@ -257,14 +263,14 @@ void loop()
     if (current_mode == RGB_LED_MODE)
     {
       // Map raw values from joy_x/_y to [-1:1] range
-      float x = (((float)joy_x / 1024) - 0.5) * 2;
-      float y = (((float)joy_y / 1024) - 0.5) * 2;
-
-      if (abs(x) > 0.1 or abs(y) > 0.1)
+      if (joy.isTilted(0.1))
       {
         // If joystick is not in neutral position, update LED's color
         // according to (x,y) coordinates.
-        uint32_t rgb = rgb_led.rectToRGB(x, y);
+        float joy_x = joy.getX(false);
+        float joy_y = joy.getY(false);
+
+        uint32_t rgb = rgb_led.rectToRGB(joy_x, joy_y);
         rgb_led.setColor(rgb);
 
         // Store selected color
@@ -291,37 +297,25 @@ void loop()
     }
     else if (current_mode == LED_MATRIX_MODE)
     {
-      // Map raw values from joy_x/_y to [-1:1] range
-      //TODO: wrap joystick handling in a class, make this a method.
-      float x = (((float)joy_x / 1024) - 0.5) * 2;
-      float y = (((float)joy_y / 1024) - 0.5) * 2;
-
       /*
         If joystick is pushed in either direction, update display.
       */
-      if ((abs(x) > 0.6 or abs(y) > 0.6) and coords_update == false)
+      if (joy.isTilted(0.6) and coords_update == false)
       {
         // Lock update so that each push of joystick only moves LEDs by one
         coords_update = true;
 
-        // x coordinate
-        if (abs(x) > 0.6)
-        {
-          int direction_x = (int)(x / abs(x));
-          coord_x = wrap_around(coord_x, direction_x, LED_MATRIX_SIZE);
-        }
-        // y coordinate
-        if (abs(y) > 0.6)
-        {
-          int direction_y = (int)(y / abs(y));
-          coord_y = wrap_around(coord_y, direction_y, LED_MATRIX_SIZE);
-        }
+        // don't update coordinates in getX/getY calls, just use ones already done.
+        int direction_x = joy.getDirection(joy.getX(false), false);
+        coord_x = wrap_around(coord_x, direction_x, LED_MATRIX_SIZE);
+        int direction_y = joy.getDirection(joy.getY(false), false);
+        coord_y = wrap_around(coord_y, direction_y, LED_MATRIX_SIZE);
 
         // XOR operation done so that LEDs can be switched on/off
         led_matrix_buffer[coord_x] ^= (1 << coord_y);
         led_matrix.setSegments(led_matrix_buffer, LED_MATRIX_SIZE);
       }
-      else if ((abs(x) < 0.1 and abs(y) < 0.1) and coords_update == true)
+      else if (!joy.isTilted(0.1) and coords_update == true)
       {
         // Joystick in neutral position, release lock
         coords_update = false;

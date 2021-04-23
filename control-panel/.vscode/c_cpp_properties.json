@@ -23,6 +23,9 @@
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\libraries\\Wire\\src",
                 "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\TM1637",
                 "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\Keypad\\src",
+                "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\Adafruit_PCF8591",
+                "C:\\Users\\Łukasz\\Documents\\Arduino\\libraries\\Adafruit_BusIO",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\libraries\\SPI\\src",
                 "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include",
                 "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include-fixed",
                 "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\avr\\include"
