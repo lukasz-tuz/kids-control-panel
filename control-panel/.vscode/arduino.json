@@ -1,4 +1,5 @@
 {
     "sketch": "control-panel.ino",
-    "board": "arduino:avr:uno"
+    "board": "arduino:avr:uno",
+    "port": "COM5"
 }
