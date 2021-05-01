@@ -20,6 +20,20 @@ public:
         }
     }
 
+    /**
+     * @brief When sharing physical pins with other devices
+     * this method needs to be called to restore pin modes
+     * required by Led bar.
+     */
+    void reset_pins()
+    {
+        for (uint8_t nPin = 0; nPin < LedBar::numColors; nPin++)
+        {
+            pinMode(LedBar::pins[nPin], OUTPUT);
+            digitalWrite(LedBar::pins[nPin], LedBar::leds[nPin]);
+        }
+    }
+
     void off()
     {
         for (uint8_t nPin = 0; nPin < LedBar::numColors; nPin++)

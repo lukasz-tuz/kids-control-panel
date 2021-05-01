@@ -9,11 +9,8 @@ namespace joystick
  * JOYSTICK_DEBUG directive.
  * 
  */
-//#define JOYSTICK_DEBUG
-    /**
-     * @brief 
-     * 
-     */
+#undef JOYSTICK_DEBUG
+
     struct Coordinates
     {
         float X;
@@ -122,8 +119,10 @@ namespace joystick
             isTilted = true;
         }
 #ifdef JOYSTICK_DEBUG
-        Serial.print("\tJoystick isTilted="); Serial.print(isTilted);
-        Serial.print(" threshold="); Serial.println(threshold);
+        Serial.print("\tJoystick isTilted=");
+        Serial.print(isTilted);
+        Serial.print(" threshold=");
+        Serial.println(threshold);
 #endif
         return isTilted;
     }
@@ -148,7 +147,8 @@ namespace joystick
         {
             direction = (int)(axis_coords / abs(axis_coords));
 #ifdef JOYSTICK_DEBUG
-            Serial.print("\tJoystick direction="); Serial.println(direction);
+            Serial.print("\tJoystick direction=");
+            Serial.println(direction);
 #endif
         }
         return direction;
@@ -163,8 +163,10 @@ namespace joystick
         Joystick::coords.X = Joystick::read_pin(Joystick::pinx);
         Joystick::coords.Y = Joystick::read_pin(Joystick::piny);
 #ifdef JOYSTICK_DEBUG
-        Serial.print("\tJoystick X="); Serial.print(Joystick::coords.X);
-        Serial.print(" Y="); Serial.println(Joystick::coords.Y);
+        Serial.print("\tJoystick X=");
+        Serial.print(Joystick::coords.X);
+        Serial.print(" Y=");
+        Serial.println(Joystick::coords.Y);
 #endif
     }
 

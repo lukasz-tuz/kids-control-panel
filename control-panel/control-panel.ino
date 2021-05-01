@@ -3,11 +3,19 @@
 #include <Encoder.h>
 #include <Adafruit_MCP23017.h>
 #include <TM1637Display.h>
-// #include <MCUFRIEND_kbv.h>
-// MCUFRIEND_kbv tft; // hard-wired for UNO shields anyway.
-#include <TouchScreen.h>
+
 #include "controlpanel.h"
+
+#ifdef LCD_TFT_CONNECTED
+#include <MCUFRIEND_kbv.h>
+MCUFRIEND_kbv tft; // hard-wired for UNO shields anyway.
+#include <TouchScreen.h>
+#endif
+
+#ifdef RGB_LED_CONNECTED
 #include "controlpanel_rgbled.h"
+#endif
+
 #include "controlpanel_display.h"
 #include "controlpanel_keypad.h"
 #include "controlpanel_ledbar.h"
@@ -130,11 +138,11 @@ uint8_t wrap_around(uint8_t value, int direction, uint8_t size)
 // using namespace rgbled;
 using namespace joystick;
 
-// /*
-// Instantiate objects for control panel's internals.
+/*
+Instantiate objects for control panel's internals.
 
-// GPIO Expanders go first.
-// */
+GPIO Expanders go first.
+*/
 auto gpiosA = new Adafruit_MCP23017();
 auto gpiosB = new Adafruit_MCP23017();
 Adafruit_PCF8591 adc = Adafruit_PCF8591();
@@ -161,14 +169,33 @@ uint8_t led_matrix_brightness = 3;
 Display char_disp = Display(DISPLAY_SIZE);
 Display matrix_disp = Display(LED_MATRIX_SIZE);
 
+#ifdef RGB_LED_CONNECTED
 // /* The RGB LED module */
 // RgbLed rgb_led = RgbLed(RBG_RED, RGB_GRN, RGB_BLU);
+#endif
 
 /* Custom LED bar module */
 LedBar led_bar = LedBar(LED_BAR_Y, LED_BAR_O, LED_BAR_R, LED_BAR_B);
 
+#ifdef LCD_TFT_CONNECTED
 /* The TFT LCD display shield with touch*/
-// TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
+TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
+
+/**
+ * @brief Global variable for storing coordinates for point pressed on screen.
+ *
+ */
+TSPoint tp;
+
+/**
+ * @brief TFT LCD shield control variables.
+ *
+ */
+int16_t BOXSIZE; // Size of color picker boxes, calculated in setup()
+int16_t PENRADIUS = 2;
+uint16_t ID, oldcolor, currentcolor;
+uint8_t Orientation = 0; // PORTRAIT
+#endif
 
 /**
  * @brief Mode determines which modules are controlled by joystick and encoder.
@@ -183,11 +210,13 @@ uint8_t current_mode = DEFAULT_MODE;
  */
 int last_knob_position = 0;
 
+#ifdef RGB_LED_CONNECTED
 /**
  * @brief Selected color for RGB LED module.
  *
  */
 // Color stored_rgb_led = Color(0, 0, 0);
+#endif
 
 /**
  * @brief Internal display buffer for LED matrix module.
@@ -203,20 +232,139 @@ uint8_t coord_y = 0;
  */
 bool coords_update = false;
 
-/**
- * @brief Global variable for storing coordinates for point pressed on screen.
- *
- */
-// TSPoint tp;
+#ifdef LCD_TFT_CONNECTED
+void setup_tft()
+{
+  /* Setup TFT LCD screen */
+  uint16_t tmp;
+
+  tft.reset();
+  ID = tft.readID();
+  tft.begin(ID);
+  tft.setRotation(Orientation);
+  tft.fillScreen(BLACK);
+
+  BOXSIZE = tft.width() / 6;
+  tft.fillScreen(BLACK);
+  tft.fillRect(0, 0, BOXSIZE, BOXSIZE, RED);
+  tft.fillRect(BOXSIZE, 0, BOXSIZE, BOXSIZE, YELLOW);
+  tft.fillRect(BOXSIZE * 2, 0, BOXSIZE, BOXSIZE, GREEN);
+  tft.fillRect(BOXSIZE * 3, 0, BOXSIZE, BOXSIZE, CYAN);
+  tft.fillRect(BOXSIZE * 4, 0, BOXSIZE, BOXSIZE, BLUE);
+  tft.fillRect(BOXSIZE * 5, 0, BOXSIZE, BOXSIZE, MAGENTA);
+
+  tft.drawRect(0, 0, BOXSIZE, BOXSIZE, WHITE);
+  currentcolor = RED;
+  delay(1000);
+}
 
 /**
- * @brief TFT LCD shield control variables.
+ * @brief Loop for paint app displayed on TFT LCD shield. Also handles touch input.
  *
  */
-// int16_t BOXSIZE; // Size of color picker boxes, calculated in setup()
-// int16_t PENRADIUS = 2;
-// uint16_t ID, oldcolor, currentcolor;
-// uint8_t Orientation = 0; // PORTRAIT
+void loop_tft()
+{
+  uint16_t xpos, ypos; //screen coordinates
+  tp = ts.getPoint();  //tp.x, tp.y are ADC values
+
+  // we have some minimum pressure we consider 'valid'
+  // pressure of 0 means no pressing!
+  if (tp.z > MINPRESSURE && tp.z < MAXPRESSURE)
+  {
+    // most mcufriend have touch (with icons) that extends below the TFT
+    // screens without icons need to reserve a space for "erase"
+    // scale the ADC values from ts.getPoint() to screen values e.g. 0-239
+    //
+    // Calibration is true for PORTRAIT. tp.y is always long dimension
+    // map to your current pixel orientation
+    switch (Orientation)
+    {
+    case 0:
+      xpos = map(tp.x, TS_LEFT, TS_RT, 0, tft.width());
+      ypos = map(tp.y, TS_TOP, TS_BOT, 0, tft.height());
+      break;
+    case 1:
+      xpos = map(tp.y, TS_TOP, TS_BOT, 0, tft.width());
+      ypos = map(tp.x, TS_RT, TS_LEFT, 0, tft.height());
+      break;
+    case 2:
+      xpos = map(tp.x, TS_RT, TS_LEFT, 0, tft.width());
+      ypos = map(tp.y, TS_BOT, TS_TOP, 0, tft.height());
+      break;
+    case 3:
+      xpos = map(tp.y, TS_BOT, TS_TOP, 0, tft.width());
+      ypos = map(tp.x, TS_LEFT, TS_RT, 0, tft.height());
+      break;
+    }
+
+    // are we in top color box area ?
+    if (ypos < BOXSIZE)
+    { //draw white border on selected color box
+      oldcolor = currentcolor;
+
+      if (xpos < BOXSIZE)
+      {
+        currentcolor = RED;
+        tft.drawRect(0, 0, BOXSIZE, BOXSIZE, WHITE);
+      }
+      else if (xpos < BOXSIZE * 2)
+      {
+        currentcolor = YELLOW;
+        tft.drawRect(BOXSIZE, 0, BOXSIZE, BOXSIZE, WHITE);
+      }
+      else if (xpos < BOXSIZE * 3)
+      {
+        currentcolor = GREEN;
+        tft.drawRect(BOXSIZE * 2, 0, BOXSIZE, BOXSIZE, WHITE);
+      }
+      else if (xpos < BOXSIZE * 4)
+      {
+        currentcolor = CYAN;
+        tft.drawRect(BOXSIZE * 3, 0, BOXSIZE, BOXSIZE, WHITE);
+      }
+      else if (xpos < BOXSIZE * 5)
+      {
+        currentcolor = BLUE;
+        tft.drawRect(BOXSIZE * 4, 0, BOXSIZE, BOXSIZE, WHITE);
+      }
+      else if (xpos < BOXSIZE * 6)
+      {
+        currentcolor = MAGENTA;
+        tft.drawRect(BOXSIZE * 5, 0, BOXSIZE, BOXSIZE, WHITE);
+      }
+
+      if (oldcolor != currentcolor)
+      { //rub out the previous white border
+        if (oldcolor == RED)
+          tft.fillRect(0, 0, BOXSIZE, BOXSIZE, RED);
+        if (oldcolor == YELLOW)
+          tft.fillRect(BOXSIZE, 0, BOXSIZE, BOXSIZE, YELLOW);
+        if (oldcolor == GREEN)
+          tft.fillRect(BOXSIZE * 2, 0, BOXSIZE, BOXSIZE, GREEN);
+        if (oldcolor == CYAN)
+          tft.fillRect(BOXSIZE * 3, 0, BOXSIZE, BOXSIZE, CYAN);
+        if (oldcolor == BLUE)
+          tft.fillRect(BOXSIZE * 4, 0, BOXSIZE, BOXSIZE, BLUE);
+        if (oldcolor == MAGENTA)
+          tft.fillRect(BOXSIZE * 5, 0, BOXSIZE, BOXSIZE, MAGENTA);
+      }
+    }
+    // are we in drawing area ?
+    if (((ypos - PENRADIUS) > BOXSIZE) && ((ypos + PENRADIUS) < tft.height()))
+    {
+      tft.fillCircle(xpos, ypos, PENRADIUS, currentcolor);
+    }
+    // are we in erase area ?
+    // Plain Touch panels use bottom 10 pixels e.g. > h - 10
+    // Touch panels with icon area e.g. > h - 0
+    if (ypos > tft.height() - 10)
+    {
+      // press the bottom of the screen to erase
+      tft.fillRect(0, BOXSIZE, tft.width(), tft.height() - BOXSIZE, BLACK);
+    }
+  }
+}
+#endif
 
 void setup()
 {
@@ -225,6 +373,10 @@ void setup()
   while (!Serial)
     ; // Leonardo: wait for serial monitor
   Serial.println("Initialzing...");
+
+#ifdef LCD_TFT_CONNECTED
+  setup_tft();
+#endif
 
   // I2C scan only called for debug purposes.
   _scanI2C();
@@ -248,28 +400,6 @@ void setup()
   led_matrix.clear();
 
   led_bar.off();
-
-  /* Setup TFT LCD screen */
-  // uint16_t tmp;
-
-  // tft.reset();
-  // ID = tft.readID();
-  // tft.begin(ID);
-  // tft.setRotation(Orientation);
-  // tft.fillScreen(BLACK);
-
-  // BOXSIZE = tft.width() / 6;
-  // tft.fillScreen(BLACK);
-  // tft.fillRect(0, 0, BOXSIZE, BOXSIZE, RED);
-  // tft.fillRect(BOXSIZE, 0, BOXSIZE, BOXSIZE, YELLOW);
-  // tft.fillRect(BOXSIZE * 2, 0, BOXSIZE, BOXSIZE, GREEN);
-  // tft.fillRect(BOXSIZE * 3, 0, BOXSIZE, BOXSIZE, CYAN);
-  // tft.fillRect(BOXSIZE * 4, 0, BOXSIZE, BOXSIZE, BLUE);
-  // tft.fillRect(BOXSIZE * 5, 0, BOXSIZE, BOXSIZE, MAGENTA);
-
-  // tft.drawRect(0, 0, BOXSIZE, BOXSIZE, WHITE);
-  // currentcolor = RED;
-  // delay(1000);
 }
 
 /**
@@ -303,154 +433,45 @@ void led_matrix_handler()
   }
 }
 
+#ifdef RGB_LED_CONNECTED
 /**
  * @brief Handler for RGB LED controls by encoder and joystick.
  *
  * @param joy_sw State of joystick switch.
  * @param delta State of Encoder knob
  */
-// void rgb_led_handler(byte joy_sw, int delta)
-// {
-//   // Map raw values from joy_x/_y to [-1:1] range
-//   if (joy.isTilted(0.1))
-//   {
-//     // If joystick is not in neutral position, update LED's color
-//     // according to (x,y) coordinates.
-//     float joy_x = joy.getX(false);
-//     float joy_y = joy.getY(false);
+void rgb_led_handler(byte joy_sw, int delta)
+{
+  // Map raw values from joy_x/_y to [-1:1] range
+  if (joy.isTilted(0.1))
+  {
+    // If joystick is not in neutral position, update LED's color
+    // according to (x,y) coordinates.
+    float joy_x = joy.getX(false);
+    float joy_y = joy.getY(false);
 
-//     uint32_t rgb = rgb_led.rectToRGB(joy_x, joy_y);
-//     rgb_led.setColor(rgb);
+    uint32_t rgb = rgb_led.rectToRGB(joy_x, joy_y);
+    rgb_led.setColor(rgb);
 
-//     // Store selected color
-//     if (joy_sw == 0)
-//     {
-//       stored_rgb_led.raw_32 = rgb;
-//     }
-//   }
-//   else
-//   {
-//     // Update RGB LED's brightness
-//     if (delta != 0)
-//     {
-//       rgb_led.changeBrightness(delta);
-//       stored_rgb_led = rgb_led.getColor();
-//     }
-//     // Show stored color when joystick is in neutral position.
-//     rgb_led.setColor(stored_rgb_led);
-//   }
-// }
-
-/**
- * @brief Loop for paint app displayed on TFT LCD shield. Also handles touch input.
- *
- */
-// void loop_tft()
-// {
-//   uint16_t xpos, ypos; //screen coordinates
-//   tp = ts.getPoint();  //tp.x, tp.y are ADC values
-
-//   // if sharing pins, you'll need to fix the directions of the touchscreen pins
-//   pinMode(XM, OUTPUT);
-//   pinMode(YP, OUTPUT);
-//   // we have some minimum pressure we consider 'valid'
-//   // pressure of 0 means no pressing!
-
-//   if (tp.z > MINPRESSURE && tp.z < MAXPRESSURE)
-//   {
-//     // most mcufriend have touch (with icons) that extends below the TFT
-//     // screens without icons need to reserve a space for "erase"
-//     // scale the ADC values from ts.getPoint() to screen values e.g. 0-239
-//     //
-//     // Calibration is true for PORTRAIT. tp.y is always long dimension
-//     // map to your current pixel orientation
-//     switch (Orientation)
-//     {
-//     case 0:
-//       xpos = map(tp.x, TS_LEFT, TS_RT, 0, tft.width());
-//       ypos = map(tp.y, TS_TOP, TS_BOT, 0, tft.height());
-//       break;
-//     case 1:
-//       xpos = map(tp.y, TS_TOP, TS_BOT, 0, tft.width());
-//       ypos = map(tp.x, TS_RT, TS_LEFT, 0, tft.height());
-//       break;
-//     case 2:
-//       xpos = map(tp.x, TS_RT, TS_LEFT, 0, tft.width());
-//       ypos = map(tp.y, TS_BOT, TS_TOP, 0, tft.height());
-//       break;
-//     case 3:
-//       xpos = map(tp.y, TS_BOT, TS_TOP, 0, tft.width());
-//       ypos = map(tp.x, TS_LEFT, TS_RT, 0, tft.height());
-//       break;
-//     }
-
-//     // are we in top color box area ?
-//     if (ypos < BOXSIZE)
-//     { //draw white border on selected color box
-//       oldcolor = currentcolor;
-
-//       if (xpos < BOXSIZE)
-//       {
-//         currentcolor = RED;
-//         tft.drawRect(0, 0, BOXSIZE, BOXSIZE, WHITE);
-//       }
-//       else if (xpos < BOXSIZE * 2)
-//       {
-//         currentcolor = YELLOW;
-//         tft.drawRect(BOXSIZE, 0, BOXSIZE, BOXSIZE, WHITE);
-//       }
-//       else if (xpos < BOXSIZE * 3)
-//       {
-//         currentcolor = GREEN;
-//         tft.drawRect(BOXSIZE * 2, 0, BOXSIZE, BOXSIZE, WHITE);
-//       }
-//       else if (xpos < BOXSIZE * 4)
-//       {
-//         currentcolor = CYAN;
-//         tft.drawRect(BOXSIZE * 3, 0, BOXSIZE, BOXSIZE, WHITE);
-//       }
-//       else if (xpos < BOXSIZE * 5)
-//       {
-//         currentcolor = BLUE;
-//         tft.drawRect(BOXSIZE * 4, 0, BOXSIZE, BOXSIZE, WHITE);
-//       }
-//       else if (xpos < BOXSIZE * 6)
-//       {
-//         currentcolor = MAGENTA;
-//         tft.drawRect(BOXSIZE * 5, 0, BOXSIZE, BOXSIZE, WHITE);
-//       }
-
-//       if (oldcolor != currentcolor)
-//       { //rub out the previous white border
-//         if (oldcolor == RED)
-//           tft.fillRect(0, 0, BOXSIZE, BOXSIZE, RED);
-//         if (oldcolor == YELLOW)
-//           tft.fillRect(BOXSIZE, 0, BOXSIZE, BOXSIZE, YELLOW);
-//         if (oldcolor == GREEN)
-//           tft.fillRect(BOXSIZE * 2, 0, BOXSIZE, BOXSIZE, GREEN);
-//         if (oldcolor == CYAN)
-//           tft.fillRect(BOXSIZE * 3, 0, BOXSIZE, BOXSIZE, CYAN);
-//         if (oldcolor == BLUE)
-//           tft.fillRect(BOXSIZE * 4, 0, BOXSIZE, BOXSIZE, BLUE);
-//         if (oldcolor == MAGENTA)
-//           tft.fillRect(BOXSIZE * 5, 0, BOXSIZE, BOXSIZE, MAGENTA);
-//       }
-//     }
-//     // are we in drawing area ?
-//     if (((ypos - PENRADIUS) > BOXSIZE) && ((ypos + PENRADIUS) < tft.height()))
-//     {
-//       tft.fillCircle(xpos, ypos, PENRADIUS, currentcolor);
-//     }
-//     // are we in erase area ?
-//     // Plain Touch panels use bottom 10 pixels e.g. > h - 10
-//     // Touch panels with icon area e.g. > h - 0
-//     if (ypos > tft.height() - 10)
-//     {
-//       // press the bottom of the screen to erase
-//       tft.fillRect(0, BOXSIZE, tft.width(), tft.height() - BOXSIZE, BLACK);
-//     }
-//   }
-// }
+    // Store selected color
+    if (joy_sw == 0)
+    {
+      stored_rgb_led.raw_32 = rgb;
+    }
+  }
+  else
+  {
+    // Update RGB LED's brightness
+    if (delta != 0)
+    {
+      rgb_led.changeBrightness(delta);
+      stored_rgb_led = rgb_led.getColor();
+    }
+    // Show stored color when joystick is in neutral position.
+    rgb_led.setColor(stored_rgb_led);
+  }
+}
+#endif
 
 /**
  * @brief Main loop for control panel.
@@ -465,7 +486,22 @@ void loop()
   if (true)
   {
     // Process paint app first.
-    // loop_tft();
+#ifdef LCD_TFT_CONNECTED
+    // Initialize shared pins to SPI mode
+    pinMode(MISO, INPUT_PULLUP);
+    pinMode(MOSI, OUTPUT);
+    // if sharing pins, you'll need to fix the directions of the touchscreen pins
+    pinMode(XM, OUTPUT);
+    pinMode(YP, OUTPUT);
+
+
+    loop_tft();
+
+    // Restore SPI pins to GPIO mode
+    pinMode(MISO, OUTPUT); // pin 12, LED_BAR_R by default
+    pinMode(MOSI, INPUT);  // pin 11, LED_MATRIX_DIO_PIN by default
+    // No need to restore A4 as both SPI and rest of device is OUTPUT
+#endif
 
     // Poll aplhanumeric keypad, key matrix, buttons, joystick, encoder
     char character = alpha_keypad.getKey();
@@ -496,7 +532,6 @@ void loop()
           matrix_disp.clear();
           led_bar.off();
         }
-        
       }
     }
 
@@ -532,8 +567,10 @@ void loop()
       Serial.println(matrix_key);
     }
   }
-  // else
-  // {
-  //   tft.fillScreen(BLACK);
-  // }
+#ifdef LCD_TFT_CONNECTED
+  else
+  {
+    tft.fillScreen(BLACK);
+  }
+#endif
 }

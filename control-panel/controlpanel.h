@@ -104,35 +104,39 @@ PINOUTS: ARDUINO UNO
          | [ ]IOREF                 MISO/12[L] |   .
          | [ ]RST                   MOSI/11[M]~|   .
          | [ ]3V3    +---+               10[M]~|   .
-         | [ ]5v    -| A |-               9[7]~|   .
-         | [ ]GND   -| R |-               8[7] |   B0
+         | [ ]5v    -| A |-               9[S]~|   .
+         | [ ]GND   -| R |-               8[S] |   B0
          | [ ]GND   -| D |-                    |
          | [ ]Vin   -| U |-               7[T] |   D7
          |          -| I |-               6[T]~|   .
-         | [ ]A0    -| N |-               5[L]~|   .
-         | [ ]A1    -| O |-               4[L] |   .
-         | [ ]A2     +---+           INT1/3[E]~|   .
-         | [ ]A3                     INT0/2[E] |   .
-         | [ ]A4/SDA  RST SCK MISO     TX>1[ ] |   .
+         | [T]A0    -| N |-               5[L]~|   .
+         | [T]A1    -| O |-               4[L] |   .
+         | [T]A2     +---+           INT1/3[E]~|   .
+         | [T]A3                     INT0/2[E] |   .
+         | [T*]A4/SDA  RST SCK MISO     TX>1[ ] |   .
          | [ ]A5/SCL  [ ] [ ] [ ]      RX<0[ ] |   D0
          |            [ ] [ ] [ ]              |
          |  UNO_R3    GND MOSI 5V  ____________/
           \_______________________/
    
    http://busyducks.com/ascii-art-arduinos
+
+   *) A4 shared between LCD_RST and I2C SDA
 */
 
+
+
 // LED bar pins (L)
-#define LED_BAR_Y 4
-#define LED_BAR_O 5
-#define LED_BAR_R 12
-#define LED_BAR_B 13
+#define LED_BAR_Y (4)
+#define LED_BAR_O (5)
+#define LED_BAR_R (12)
+#define LED_BAR_B (13)
 
 // Rotary encoder pins (E)
-#define ENCODER_PIN_A 2
-#define ENCODER_PIN_B 3
+#define ENCODER_PIN_A (2)
+#define ENCODER_PIN_B (3)
 
-// 7seg Display pins (7)
+// 7seg Display pins (S)
 #define DISP_CLK_PIN (8)
 #define DISP_DIO_PIN (9)
 
@@ -141,12 +145,14 @@ PINOUTS: ARDUINO UNO
 #define LED_MATRIX_DIO_PIN (11)
 
 // RGB LED pins - PWM required! (R)
-// #define RBG_RED 9
-// #define RGB_GRN 10
-// #define RGB_BLU 11
+#undef RGB_LED_CONNECTED
+#define RBG_RED (9)
+#define RGB_GRN (10)
+#define RGB_BLU (11)
 
 // TFT LCD (T)
-const int XP = 7, XM = A1, YP = A2, YM = 6; //240x320 ID=0x6809
+#undef LCD_TFT_CONNECTED
+const int XP = (7), XM = A1, YP = A2, YM = (6); //240x320 ID=0x6809
 
 /*
    GPIO Exander A
