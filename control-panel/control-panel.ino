@@ -135,7 +135,9 @@ uint8_t wrap_around(uint8_t value, int direction, uint8_t size)
   return v;
 }
 
-// using namespace rgbled;
+#ifdef RGB_LED_CONNECTED
+using namespace rgbled;
+#endif
 using namespace joystick;
 
 /*
@@ -171,7 +173,7 @@ Display matrix_disp = Display(LED_MATRIX_SIZE);
 
 #ifdef RGB_LED_CONNECTED
 // /* The RGB LED module */
-// RgbLed rgb_led = RgbLed(RBG_RED, RGB_GRN, RGB_BLU);
+RgbLed rgb_led = RgbLed(RBG_RED, RGB_GRN, RGB_BLU);
 #endif
 
 /* Custom LED bar module */
@@ -215,7 +217,7 @@ int last_knob_position = 0;
  * @brief Selected color for RGB LED module.
  *
  */
-// Color stored_rgb_led = Color(0, 0, 0);
+Color stored_rgb_led = Color(0, 0, 0);
 #endif
 
 /**
@@ -385,14 +387,14 @@ void setup()
   gpiosB->begin(GPIOB_ADDR, &Wire);
   adc.begin();
 
-  // // Configure pins for buttons/switches which are not part of
-  // // scanning keypad matrix.
+  // Configure pins for buttons/switches which are not part of
+  // scanning keypad matrix.
   _configurePins(gpiosB, JOYSTICK_SWITCH, INPUT_PULLUP);
   _configurePins(gpiosB, ENCODER_SWITCH, INPUT_PULLUP);
   _configurePins(gpiosB, ENABLE_A_PIN, INPUT_PULLUP);
   _configurePins(gpiosB, ENABLE_B_PIN, INPUT_PULLUP);
 
-  // // Initialize displays
+  // Initialize displays
   seven_seg.setBrightness(seven_seg_brightness, true);
   seven_seg.clear();
 
@@ -400,6 +402,8 @@ void setup()
   led_matrix.clear();
 
   led_bar.off();
+
+  rgb_led.setColor(Color(0.5, 0.5, 0.5));
 }
 
 /**
@@ -494,13 +498,12 @@ void loop()
     pinMode(XM, OUTPUT);
     pinMode(YP, OUTPUT);
 
-
     loop_tft();
 
     // Restore SPI pins to GPIO mode
     pinMode(MISO, OUTPUT); // pin 12, LED_BAR_R by default
     pinMode(MOSI, INPUT);  // pin 11, LED_MATRIX_DIO_PIN by default
-    // No need to restore A4 as both SPI and rest of device is OUTPUT
+                           // No need to restore A4 as both SPI and rest of device is OUTPUT
 #endif
 
     // Poll aplhanumeric keypad, key matrix, buttons, joystick, encoder
@@ -537,6 +540,9 @@ void loop()
 
     if (current_mode == RGB_LED_MODE)
     {
+#ifdef RGB_LED_CONNECTED
+      rgb_led_handler(joy_sw, delta);
+#endif
       led_bar.move_bar(1);
     }
     else if (current_mode == LED_BAR_MODE)

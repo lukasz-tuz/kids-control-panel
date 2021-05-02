@@ -100,20 +100,20 @@ PINOUTS: ARDUINO UNO
          |          5V/MISO2 [ ][ ]  A4/SDA[ ] |   C4 
          |                             AREF[ ] |
          |                              GND[ ] |
-         | [ ]N/C                    SCK/13[L] |   B5
-         | [ ]IOREF                 MISO/12[L] |   .
-         | [ ]RST                   MOSI/11[M]~|   .
-         | [ ]3V3    +---+               10[M]~|   .
+         | [ ]N/C                    SCK/13[M] |   B5
+         | [ ]IOREF                 MISO/12[M] |   .
+         | [ ]RST                   MOSI/11[R]~|   .
+         | [ ]3V3    +---+               10[R]~|   .
          | [ ]5v    -| A |-               9[S]~|   .
          | [ ]GND   -| R |-               8[S] |   B0
          | [ ]GND   -| D |-                    |
-         | [ ]Vin   -| U |-               7[T] |   D7
-         |          -| I |-               6[T]~|   .
-         | [T]A0    -| N |-               5[L]~|   .
-         | [T]A1    -| O |-               4[L] |   .
-         | [T]A2     +---+           INT1/3[E]~|   .
-         | [T]A3                     INT0/2[E] |   .
-         | [T*]A4/SDA  RST SCK MISO     TX>1[ ] |   .
+         | [ ]Vin   -| U |-               7[ ] |   D7
+         |          -| I |-               6[R]~|   .
+         | [L]A0    -| N |-               5[L]~|   .
+         | [L]A1    -| O |-               4[L] |   .
+         | [ ]A2     +---+           INT1/3[E]~|   .
+         | [ ]A3                     INT0/2[E] |   .
+         | [ ]A4/SDA  RST SCK MISO     TX>1[ ] |   .
          | [ ]A5/SCL  [ ] [ ] [ ]      RX<0[ ] |   D0
          |            [ ] [ ] [ ]              |
          |  UNO_R3    GND MOSI 5V  ____________/
@@ -127,8 +127,8 @@ PINOUTS: ARDUINO UNO
 // LED bar pins (L)
 #define LED_BAR_Y (4)
 #define LED_BAR_O (5)
-#define LED_BAR_R (12)
-#define LED_BAR_B (13)
+#define LED_BAR_R (A0)
+#define LED_BAR_B (A1)
 
 // Rotary encoder pins (E)
 #define ENCODER_PIN_A (2)
@@ -139,12 +139,12 @@ PINOUTS: ARDUINO UNO
 #define DISP_DIO_PIN (9)
 
 // LED Matrix pins (M)
-#define LED_MATRIX_CLK_PIN (10)
-#define LED_MATRIX_DIO_PIN (11)
+#define LED_MATRIX_CLK_PIN (12)
+#define LED_MATRIX_DIO_PIN (13)
 
 // RGB LED pins - PWM required! (R)
-#undef RGB_LED_CONNECTED
-#define RBG_RED (9)
+#define RGB_LED_CONNECTED
+#define RBG_RED (6)
 #define RGB_GRN (10)
 #define RGB_BLU (11)
 
