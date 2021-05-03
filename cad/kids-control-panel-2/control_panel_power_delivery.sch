@@ -1,0 +1,250 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 2
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Barrel_Jack J1
+U 1 1 60C2A415
+P 2950 3250
+F 0 "J1" H 3007 3575 50  0000 C CNN
+F 1 "DC Power In" H 3007 3484 50  0000 C CNN
+F 2 "" H 3000 3210 50  0001 C CNN
+F 3 "~" H 3000 3210 50  0001 C CNN
+	1    2950 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPDT_MSM SW7
+U 1 1 60C2B853
+P 4050 2750
+F 0 "SW7" V 4096 2562 50  0000 R CNN
+F 1 "ARDUINO_A_PWR" V 4005 2562 50  0000 R CNN
+F 2 "" H 4050 2750 50  0001 C CNN
+F 3 "~" H 4050 2750 50  0001 C CNN
+	1    4050 2750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Switch:SW_SPDT_MSM SW8
+U 1 1 60C2B943
+P 5100 2750
+F 0 "SW8" V 5146 2562 50  0000 R CNN
+F 1 "7_SEGMENT_PWR" V 5055 2562 50  0000 R CNN
+F 2 "" H 5100 2750 50  0001 C CNN
+F 3 "~" H 5100 2750 50  0001 C CNN
+	1    5100 2750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Switch:SW_SPDT_MSM SW9
+U 1 1 60C2BD3B
+P 6250 2750
+F 0 "SW9" V 6296 2562 50  0000 R CNN
+F 1 "LED_MATRIX_PWR" V 6205 2562 50  0000 R CNN
+F 2 "" H 6250 2750 50  0001 C CNN
+F 3 "~" H 6250 2750 50  0001 C CNN
+	1    6250 2750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Switch:SW_SPDT_MSM SW10
+U 1 1 60C2C129
+P 7300 2750
+F 0 "SW10" V 7346 2562 50  0000 R CNN
+F 1 "ARDUINO_B_PWR" V 7255 2562 50  0000 R CNN
+F 2 "" H 7300 2750 50  0001 C CNN
+F 3 "~" H 7300 2750 50  0001 C CNN
+	1    7300 2750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L capricorn:pns-18650-2S U10
+U 1 1 60C2D611
+P 5750 3800
+F 0 "U10" H 5725 3535 50  0000 C CNN
+F 1 "pns-18650-2S" H 5725 3626 50  0000 C CNN
+F 2 "" H 5750 3750 50  0001 C CNN
+F 3 "" H 5750 3750 50  0001 C CNN
+	1    5750 3800
+	1    0    0    1   
+$EndComp
+$Comp
+L Device:Battery_Cell BT1
+U 1 1 60C2E7E4
+P 3900 4450
+F 0 "BT1" H 4018 4546 50  0000 L CNN
+F 1 "Battery_Cell" H 4018 4455 50  0000 L CNN
+F 2 "" V 3900 4510 50  0001 C CNN
+F 3 "~" V 3900 4510 50  0001 C CNN
+	1    3900 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell BT2
+U 1 1 60C2ED46
+P 3900 4850
+F 0 "BT2" H 4018 4946 50  0000 L CNN
+F 1 "Battery_Cell" H 4018 4855 50  0000 L CNN
+F 2 "" V 3900 4910 50  0001 C CNN
+F 3 "~" V 3900 4910 50  0001 C CNN
+	1    3900 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push_SPDT SW6
+U 1 1 60C3001C
+P 3600 4000
+F 0 "SW6" H 3600 4285 50  0000 C CNN
+F 1 "Batt_Level_LED_ON" H 3600 4194 50  0000 C CNN
+F 2 "" H 3600 4000 50  0001 C CNN
+F 3 "~" H 3600 4000 50  0001 C CNN
+	1    3600 4000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L capricorn:Battery_Level_Indicator_Module U9
+U 1 1 60C31F64
+P 2900 3850
+F 0 "U9" H 3000 3700 50  0000 C CNN
+F 1 "Battery_Level_Indicator_Module" H 3250 3000 50  0000 C CNN
+F 2 "" H 2900 3850 50  0001 C CNN
+F 3 "" H 2900 3850 50  0001 C CNN
+	1    2900 3850
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 4650 3900 4600
+Wire Wire Line
+	3900 4950 3900 5000
+Wire Wire Line
+	3900 5000 5300 5000
+Wire Wire Line
+	5300 5000 5300 4100
+Wire Wire Line
+	5300 4100 5350 4100
+Wire Wire Line
+	5350 4000 3900 4000
+Wire Wire Line
+	3900 4000 3900 4250
+Wire Wire Line
+	6100 3950 6200 3950
+Wire Wire Line
+	6200 3950 6200 4600
+Wire Wire Line
+	6200 4600 3900 4600
+Connection ~ 3900 4600
+Wire Wire Line
+	3900 4600 3900 4550
+Wire Wire Line
+	3800 4000 3900 4000
+Connection ~ 3900 4000
+Wire Wire Line
+	3150 4100 3400 4100
+Wire Wire Line
+	3150 4600 3350 4600
+Wire Wire Line
+	3350 4600 3350 5000
+Wire Wire Line
+	3350 5000 3900 5000
+Connection ~ 3900 5000
+NoConn ~ 3400 3900
+Wire Wire Line
+	3250 3350 3700 3350
+Wire Wire Line
+	4350 3350 4350 3850
+Wire Wire Line
+	4350 3850 5350 3850
+Wire Wire Line
+	3250 3150 4050 3150
+Wire Wire Line
+	4450 3150 4450 3750
+Wire Wire Line
+	4450 3750 5350 3750
+Connection ~ 4050 3150
+Wire Wire Line
+	4050 3150 4450 3150
+Wire Wire Line
+	4050 2950 4050 3150
+Wire Wire Line
+	4450 3150 5100 3150
+Wire Wire Line
+	5100 3150 5100 2950
+Connection ~ 4450 3150
+Wire Wire Line
+	5100 3150 6250 3150
+Wire Wire Line
+	6250 3150 6250 2950
+Connection ~ 5100 3150
+Wire Wire Line
+	6250 3150 7300 3150
+Wire Wire Line
+	7300 3150 7300 2950
+Connection ~ 6250 3150
+Wire Wire Line
+	4150 2550 4150 2050
+Wire Wire Line
+	5200 2550 5200 2250
+Wire Wire Line
+	6350 2550 6350 2250
+Text GLabel 5200 2250 1    50   Output ~ 0
+7SEG_DISP_POWER
+Text GLabel 6350 2250 1    50   Output ~ 0
+LED_MATRIX_POWER
+$Comp
+L Connector:Barrel_Jack J2
+U 1 1 60C5ACED
+P 4050 1750
+F 0 "J2" V 4061 1938 50  0000 L CNN
+F 1 "Arduino A Power" V 4152 1938 50  0000 L CNN
+F 2 "" H 4100 1710 50  0001 C CNN
+F 3 "~" H 4100 1710 50  0001 C CNN
+	1    4050 1750
+	0    1    1    0   
+$EndComp
+NoConn ~ 6150 2550
+NoConn ~ 7200 2550
+NoConn ~ 5000 2550
+NoConn ~ 3950 2550
+Wire Wire Line
+	3950 2050 3950 2300
+Wire Wire Line
+	3950 2300 3700 2300
+Wire Wire Line
+	3700 2300 3700 3350
+Connection ~ 3700 3350
+Wire Wire Line
+	3700 3350 4350 3350
+Wire Wire Line
+	6950 3350 4350 3350
+Connection ~ 4350 3350
+Wire Wire Line
+	7400 2550 7400 2000
+Wire Wire Line
+	6950 2300 6950 3350
+$Comp
+L Connector:Barrel_Jack J3
+U 1 1 60C5BF75
+P 7300 1700
+F 0 "J3" V 7311 1888 50  0000 L CNN
+F 1 "Arduino B Power" V 7402 1888 50  0000 L CNN
+F 2 "" H 7350 1660 50  0001 C CNN
+F 3 "~" H 7350 1660 50  0001 C CNN
+	1    7300 1700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6950 2300 7200 2300
+Wire Wire Line
+	7200 2300 7200 2000
+$EndSCHEMATC

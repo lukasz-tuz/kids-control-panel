@@ -121,7 +121,6 @@ PINOUTS: ARDUINO UNO
    
    http://busyducks.com/ascii-art-arduinos
 
-   *) A4 shared between LCD_RST and I2C SDA
 */
 
 // LED bar pins (L)
